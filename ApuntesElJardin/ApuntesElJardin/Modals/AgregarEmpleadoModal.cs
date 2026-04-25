@@ -1,0 +1,58 @@
+﻿using ApuntesEmpleados.BL;
+using ApunteEmpleados.Entities;
+using System;
+using System.Windows.Forms;
+
+namespace ApuntesElJardin.Modals
+{
+    public partial class AgregarEmpleadoModal : Form
+    {
+        private EmpleadosBL empleadosBL = new EmpleadosBL();
+
+        public AgregarEmpleadoModal()
+        {
+            InitializeComponent();
+        }
+
+        private void CargarTrabajos()
+        {
+            cmbTrabajo.DataSource = new List<string> { "MiniMarket", "Restaurante", "Souvenir", "Heladeria" };
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNombreCompleto.Text) ||
+                string.IsNullOrWhiteSpace(cmbTrabajo.Text))
+            {
+                MessageBox.Show("Por favor complete todos los campos.");
+                return;
+            }
+
+            Empleado empleado = new Empleado
+            {
+                NombreCompleto = txtNombreCompleto.Text.Trim(),
+                Trabajo = cmbTrabajo.Text.Trim()
+            };
+
+            if (empleadosBL.Empleado_Insertar(empleado, out string mensaje))
+            {
+                MessageBox.Show(mensaje);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show(mensaje);
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void AgregarEmpleadoModal_Load(object sender, EventArgs e)
+        {
+            CargarTrabajos();
+        }
+    }
+}
