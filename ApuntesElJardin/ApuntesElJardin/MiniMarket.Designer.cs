@@ -30,15 +30,15 @@
         {
             btnNuevoApunte = new Button();
             btnVerApuntes = new Button();
-            btnNuevoEmpleado = new Button();
             SuspendLayout();
             // 
             // btnNuevoApunte
             // 
             btnNuevoApunte.Font = new Font("Segoe UI", 15F);
-            btnNuevoApunte.Location = new Point(85, 168);
+            btnNuevoApunte.Location = new Point(72, 147);
+            btnNuevoApunte.Margin = new Padding(3, 4, 3, 4);
             btnNuevoApunte.Name = "btnNuevoApunte";
-            btnNuevoApunte.Size = new Size(183, 94);
+            btnNuevoApunte.Size = new Size(209, 125);
             btnNuevoApunte.TabIndex = 0;
             btnNuevoApunte.Text = "Nuevo Apunte";
             btnNuevoApunte.UseVisualStyleBackColor = true;
@@ -47,33 +47,23 @@
             // btnVerApuntes
             // 
             btnVerApuntes.Font = new Font("Segoe UI", 15F);
-            btnVerApuntes.Location = new Point(375, 168);
+            btnVerApuntes.Location = new Point(406, 147);
+            btnVerApuntes.Margin = new Padding(3, 4, 3, 4);
             btnVerApuntes.Name = "btnVerApuntes";
-            btnVerApuntes.Size = new Size(183, 94);
+            btnVerApuntes.Size = new Size(209, 125);
             btnVerApuntes.TabIndex = 1;
             btnVerApuntes.Text = "Ver Apuntes";
             btnVerApuntes.UseVisualStyleBackColor = true;
             btnVerApuntes.Click += btnVerApuntes_Click;
             // 
-            // btnNuevoEmpleado
-            // 
-            btnNuevoEmpleado.Font = new Font("Segoe UI", 10F);
-            btnNuevoEmpleado.Location = new Point(12, 12);
-            btnNuevoEmpleado.Name = "btnNuevoEmpleado";
-            btnNuevoEmpleado.Size = new Size(127, 31);
-            btnNuevoEmpleado.TabIndex = 2;
-            btnNuevoEmpleado.Text = "Nuevo Empleado";
-            btnNuevoEmpleado.UseVisualStyleBackColor = true;
-            btnNuevoEmpleado.Click += btnNuevoEmpleado_Click;
-            // 
             // MiniMarket
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(663, 424);
-            Controls.Add(btnNuevoEmpleado);
+            ClientSize = new Size(699, 460);
             Controls.Add(btnVerApuntes);
             Controls.Add(btnNuevoApunte);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "MiniMarket";
             Text = "MiniMarket";
             ResumeLayout(false);
@@ -83,6 +73,5 @@
 
         private Button btnNuevoApunte;
         private Button btnVerApuntes;
-        private Button btnNuevoEmpleado;
     }
 }

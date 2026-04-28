@@ -37,6 +37,7 @@ namespace ApuntesElJardin.Modals
             if (empleadosBL.Empleado_Insertar(empleado, out string mensaje))
             {
                 MessageBox.Show(mensaje);
+                DialogResult = DialogResult.OK;
                 this.Close();
             }
             else

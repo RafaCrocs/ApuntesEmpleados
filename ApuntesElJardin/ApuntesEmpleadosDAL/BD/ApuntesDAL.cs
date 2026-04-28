@@ -30,6 +30,7 @@ namespace ApuntesEmpleados.DAL.BD
                                 {
                                     IdApunte = Convert.ToInt32(reader["IdApunte"]),
                                     NombreCompleto = reader["NombreCompleto"].ToString(),
+                                    Trabajo = reader["Trabajo"].ToString(),
                                     Origen = reader["Origen"].ToString(),
                                     Monto = Convert.ToDecimal(reader["Monto"]),
                                     Detalle = reader["Detalle"].ToString(),

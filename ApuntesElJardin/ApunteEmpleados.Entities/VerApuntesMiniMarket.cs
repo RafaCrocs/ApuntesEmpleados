@@ -8,6 +8,7 @@ namespace ApuntesEmpleados.Entities
     {
         public int IdApunte { get; set; }
         public string NombreCompleto { get; set; }
+        public string Trabajo { get; set; }
         public string Origen { get; set; }
         public decimal Monto { get; set; }
         public string Detalle { get; set; }

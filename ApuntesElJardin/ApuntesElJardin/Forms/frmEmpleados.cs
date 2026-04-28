@@ -1,4 +1,5 @@
 ﻿using ApunteEmpleados.Entities;
+using ApuntesElJardin.Modals;
 using ApuntesEmpleados.BL;
 using System;
 using System.Collections.Generic;
@@ -21,36 +22,26 @@ namespace ApuntesElJardin.Forms
         private EmpleadosBL empleadosBL = new EmpleadosBL();
         private List<Empleado> empleados = new List<Empleado>();
 
-        private void CargarGrid()
+        private void configurarColumnas()
         {
-            empleados = empleadosBL.Empleados_ObtenerTodos();
-            gridEmpleados.DataSource = null;
-            gridEmpleados.DataSource = empleados;
+            gridEmpleados.Columns.Clear();
+
+            gridEmpleados.Columns.Add(new DataGridViewButtonColumn { Name = "Agregar", HeaderText = "", Width = 50 });
+
+            gridEmpleados.Columns.Add(new DataGridViewTextBoxColumn { Name = "IdEmpleado", DataPropertyName = "IdEmpleado", HeaderText = "IdEmpleado", Visible = false });
+            gridEmpleados.Columns.Add(new DataGridViewTextBoxColumn { Name = "NombreCompleto", DataPropertyName = "NombreCompleto", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
+            gridEmpleados.Columns.Add(new DataGridViewTextBoxColumn { Name = "Tranajo", DataPropertyName = "Trabajo", HeaderText = "De: " });
+
         }
 
-        //private void ConfigurarColumnas()
-        //{
-        //    gridEmpleados.Columns.Add(new DataGridViewTextBoxColumn()
-        //    {
-        //        Name = "IdEmpleado",
-        //        HeaderText = "ID Empleado",
-        //        DataPropertyName = "IdEmpleado",
-        //        Visible = false
-        //    });
-        //    gridEmpleados.Columns.Add(new DataGridViewTextBoxColumn()
-        //    {
-        //        Name = "NombreCompleto",
-        //        HeaderText = "Nombre Completo",
-        //        DataPropertyName = "NombreCompleto",
-        //        AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        //    });
-        //    gridEmpleados.Columns.Add(new DataGridViewTextBoxColumn()
-        //    {
-        //        Name = "Trabajo",
-        //        HeaderText = "Trabajo",
-        //        DataPropertyName = "Trabajo"
-        //    });
-        //}
+        private void CargarGrid()
+        {
+            
+            empleados = empleadosBL.Empleados_ObtenerTodos();
+            gridEmpleados.DataSource = null;
+            configurarColumnas();
+            gridEmpleados.DataSource = empleados;
+        }
 
         private void CargarCombo()
         {
@@ -58,7 +49,6 @@ namespace ApuntesElJardin.Forms
         }
         private void frmEmpleados_Load(object sender, EventArgs e)
         {
-            //ConfigurarColumnas();
             CargarGrid();
             CargarCombo();
         }
@@ -104,6 +94,13 @@ namespace ApuntesElJardin.Forms
                 var empleadosFiltro = empleados.Where(x => x.Trabajo.ToLower().Contains(cmbTrabajo.Text.ToLower())).ToList();
                 gridEmpleados.DataSource = empleadosFiltro;
             }
+        }
+
+        private void btnNuevoEmpleado_Click(object sender, EventArgs e)
+        {
+            AgregarEmpleadoModal modal = new AgregarEmpleadoModal();
+            modal.ShowDialog();
+            CargarGrid();
         }
     }
 }

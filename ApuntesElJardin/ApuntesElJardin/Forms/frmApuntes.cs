@@ -1,4 +1,5 @@
-﻿using ApuntesEmpleados.BL;
+﻿using ApunteEmpleados.Entities;
+using ApuntesEmpleados.BL;
 using ApuntesEmpleados.Entities;
 using System;
 using System.Collections.Generic;
@@ -18,17 +19,22 @@ namespace ApuntesElJardin.Forms
         }
 
         private ApuntesBL apuntesBL = new ApuntesBL();
-        private List<VerApuntesMiniMarket> apuntesMiniMarkets;
+        private List<VerApuntesMiniMarket> apuntesMiniMarket;
 
         public void CargarGrid()
         {
-            apuntesMiniMarkets = apuntesBL.ApuntesMiniMarkets();
-            gridApuntes.DataSource = apuntesMiniMarkets;
+            apuntesMiniMarket = apuntesBL.ApuntesMiniMarkets();
+            gridApuntes.DataSource = apuntesMiniMarket;
         }
 
+        private void CargarCombos()
+        {
+            cmbTrabajo.DataSource = new List<String> { "", "Souvenir", "Minimarket", "Restaurante" };
+        }
         private void frmApuntes_Load(object sender, EventArgs e)
         {
             CargarGrid();
+            CargarCombos();
         }
 
         private void gridApuntes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -45,18 +51,18 @@ namespace ApuntesElJardin.Forms
         {
             if (txtNombre.Text.Length > 0)
             {
-                var filtrados = apuntesMiniMarkets.FindAll(a => a.NombreCompleto.IndexOf(txtNombre.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                var filtrados = apuntesMiniMarket.FindAll(a => a.NombreCompleto.IndexOf(txtNombre.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                 gridApuntes.DataSource = filtrados;
             }
             else
             {
-                gridApuntes.DataSource = apuntesMiniMarkets;
+                gridApuntes.DataSource = apuntesMiniMarket;
             }
         }
 
         private void gridApuntes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex >= 0 && gridApuntes.Columns[e.ColumnIndex].Name == "Pagar")
+            if (e.RowIndex >= 0 && gridApuntes.Columns[e.ColumnIndex].Name == "Pagar")
             {
                 int idApunte = Convert.ToInt32(gridApuntes.Rows[e.RowIndex].Cells["IdApunte"].Value);
                 if (MessageBox.Show("¿Está seguro que desea pagar este apunte?\n" + gridApuntes.Rows[e.RowIndex].Cells["NombreCompleto"].Value.ToString() + "\nMonto: " + Convert.ToDecimal(gridApuntes.Rows[e.RowIndex].Cells["Monto"].Value).ToString("C2", new System.Globalization.CultureInfo("es-CR")), "Confirmar Pago", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -71,6 +77,20 @@ namespace ApuntesElJardin.Forms
                         MessageBox.Show("Error al pagar el apunte");
                     }
                 }
+            }
+        }
+
+        private void cmbTrabajo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbTrabajo.Text == "")
+            {
+                gridApuntes.DataSource = apuntesMiniMarket;
+                return;
+            }
+            else
+            {
+                var empleadosFiltro = apuntesMiniMarket.Where(x => x.Trabajo.ToLower().Contains(cmbTrabajo.Text.ToLower())).ToList();
+                gridApuntes.DataSource = empleadosFiltro;
             }
         }
     }

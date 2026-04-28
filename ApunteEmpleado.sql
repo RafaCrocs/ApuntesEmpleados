@@ -1,8 +1,8 @@
 --Base de datos para apuntes de empleados en la empresa
-CREATE DATABASE ApuntesEmpleados3;
+CREATE DATABASE ApuntesEmpleados;
 GO
 
-USE ApuntesEmpleados3;
+USE ApuntesEmpleados;
 GO
 
 CREATE TABLE Empleados (
@@ -105,6 +105,7 @@ AS
 select
 	a.IdApunte,
 	e.NombreCompleto,
+	e.Trabajo,
 	a.Origen,
 	a.Monto,
 	a.Detalle,
@@ -119,6 +120,7 @@ AS
 select
 	a.IdApunte,
 	e.NombreCompleto,
+	e.Trabajo,
 	a.Origen,
 	a.Monto,
 	a.Detalle,
@@ -147,6 +149,7 @@ AS
 select
 	a.IdApunte,
 	e.NombreCompleto,
+	e.Trabajo,
 	a.Origen,
 	a.Monto,
 	a.Detalle,
@@ -155,7 +158,6 @@ select
 	left join Apuntes a on e.IdEmpleado = a.IdEmpleado
 	where a.Origen = 'Heladeria' and a.IdApunte is not null;
 go
-
 
 
 -- Procedimiento almaenado para obtener todos los empleados con sus apuntes, quiero que sumen el monto total de cada origen por empleado, pero solo una vez
@@ -184,24 +186,6 @@ select * from vw_ApuntesEmpleadosHeladeria;
 go
 exec sp_ObtenerApuntesEmpleados;
 
-USE ApuntesEmpleados3;
-GO
-
-USE ApuntesEmpleados3;
-GO
-
--- Crear login con permisos completos
-CREATE LOGIN AdminCompleto 
-WITH PASSWORD = 'Admin2024!Segura';  -- Cambia esta contraseña
-GO
-
--- Crear usuario en la base de datos
-CREATE USER AdminCompleto FOR LOGIN AdminCompleto;
-GO
-
--- Asignar rol de propietario de base de datos (permisos completos)
-ALTER ROLE db_owner ADD MEMBER AdminCompleto;
-GO
-
-SELECT 'Usuario con permisos completos creado exitosamente' AS Resultado;
-GO
+select * from Empleados
+delete from Empleados where IdEmpleado > 3
+delete from Apuntes

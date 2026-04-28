@@ -21,11 +21,5 @@ namespace ApuntesElJardin
             frmApuntes frmApuntes = new frmApuntes();
             frmApuntes.Show();
         }
-
-        private void btnNuevoEmpleado_Click(object sender, EventArgs e)
-        {
-            AgregarEmpleadoModal modal = new AgregarEmpleadoModal();
-            modal.Show();
-        }
     }
 }

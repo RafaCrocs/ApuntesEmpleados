@@ -42,7 +42,7 @@
             txtNombreCompleto.Location = new Point(20, 130);
             txtNombreCompleto.MaxLength = 100;
             txtNombreCompleto.Name = "txtNombreCompleto";
-            txtNombreCompleto.Size = new Size(340, 34);
+            txtNombreCompleto.Size = new Size(340, 41);
             txtNombreCompleto.TabIndex = 1;
             // 
             // btnGuardar
@@ -77,7 +77,7 @@
             lblNombreCompleto.Font = new Font("Segoe UI", 15F);
             lblNombreCompleto.Location = new Point(20, 88);
             lblNombreCompleto.Name = "lblNombreCompleto";
-            lblNombreCompleto.Size = new Size(181, 28);
+            lblNombreCompleto.Size = new Size(229, 35);
             lblNombreCompleto.TabIndex = 0;
             lblNombreCompleto.Text = "Nombre Completo:";
             // 
@@ -87,17 +87,18 @@
             lblTrabajo.Font = new Font("Segoe UI", 15F);
             lblTrabajo.Location = new Point(20, 177);
             lblTrabajo.Name = "lblTrabajo";
-            lblTrabajo.Size = new Size(80, 28);
+            lblTrabajo.Size = new Size(51, 35);
             lblTrabajo.TabIndex = 2;
-            lblTrabajo.Text = "Trabajo:";
+            lblTrabajo.Text = "De:";
             // 
             // cmbTrabajo
             // 
+            cmbTrabajo.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTrabajo.Font = new Font("Segoe UI", 15F);
             cmbTrabajo.FormattingEnabled = true;
-            cmbTrabajo.Location = new Point(20, 208);
+            cmbTrabajo.Location = new Point(20, 215);
             cmbTrabajo.Name = "cmbTrabajo";
-            cmbTrabajo.Size = new Size(247, 36);
+            cmbTrabajo.Size = new Size(247, 43);
             cmbTrabajo.TabIndex = 6;
             // 
             // AgregarEmpleadoModal
