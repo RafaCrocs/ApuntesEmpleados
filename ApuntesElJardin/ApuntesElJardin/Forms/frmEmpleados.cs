@@ -51,6 +51,9 @@ namespace ApuntesElJardin.Forms
         {
             CargarGrid();
             CargarCombo();
+            gridEmpleados.RowsDefaultCellStyle.BackColor = Color.LightBlue;
+            gridEmpleados.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+            gridEmpleados.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
         private void gridEmpleados_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)

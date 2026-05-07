@@ -35,6 +35,9 @@ namespace ApuntesElJardin.Forms
         {
             CargarGrid();
             CargarCombos();
+            gridApuntes.RowsDefaultCellStyle.BackColor = Color.LightBlue;
+            gridApuntes.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+            gridApuntes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
         private void gridApuntes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -64,7 +67,7 @@ namespace ApuntesElJardin.Forms
         {
             if (e.RowIndex >= 0 && gridApuntes.Columns[e.ColumnIndex].Name == "Pagar")
             {
-                int idApunte = Convert.ToInt32(gridApuntes.Rows[e.RowIndex].Cells["IdApunte"].Value);   
+                int idApunte = Convert.ToInt32(gridApuntes.Rows[e.RowIndex].Cells["IdApunte"].Value);
                 if (MessageBox.Show("¿Está seguro que desea pagar este apunte?\n" + gridApuntes.Rows[e.RowIndex].Cells["NombreCompleto"].Value.ToString() + "\nMonto: " + Convert.ToDecimal(gridApuntes.Rows[e.RowIndex].Cells["Monto"].Value).ToString("C2", new System.Globalization.CultureInfo("es-CR")), "Confirmar Pago", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     if (apuntesBL.PagarApunte(idApunte))
@@ -91,6 +94,12 @@ namespace ApuntesElJardin.Forms
                 var empleadosFiltro = apuntesMiniMarket.Where(x => x.Trabajo.ToLower().Contains(cmbTrabajo.Text.ToLower())).ToList();
                 gridApuntes.DataSource = empleadosFiltro;
             }
+        }
+
+        private void btnVerHistorial_Click(object sender, EventArgs e)
+        {
+            frmHistorial historial = new frmHistorial();
+            historial.Show();
         }
     }
 }

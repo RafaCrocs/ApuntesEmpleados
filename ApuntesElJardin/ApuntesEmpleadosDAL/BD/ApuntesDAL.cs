@@ -86,14 +86,19 @@ namespace ApuntesEmpleados.DAL.BD
         public bool PagarApunte(int idApunte)
         {
             bool resultado = false;
-            string query = "delete from Apuntes where IdApunte = @IdApunte";
 
 
             using (SqlConnection conn = new SqlConnection(Conexion.Cadena))
             {
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlCommand cmd = new SqlCommand("sp_PagarApunte", conn))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@IdApunte", idApunte);
+                    cmd.Parameters.AddWithValue("@SePagoEn", "MiniMarket");
+
+                    cmd.Parameters.Add("@Mensaje", SqlDbType.VarChar, 200).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
+
                     try
                     {
                         conn.Open();

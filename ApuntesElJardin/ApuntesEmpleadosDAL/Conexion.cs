@@ -7,6 +7,6 @@ namespace ApuntesEmpleados.DAL
     public class Conexion
     {
 
-        public static string Cadena = "server=localhost; database=ApuntesEmpleados; trustservercertificate=true; integrated security=true;";
+        public static string Cadena = "server=localhost; database=ApuntesEmpleados3; trustservercertificate=true; integrated security=true;";
     }
 }

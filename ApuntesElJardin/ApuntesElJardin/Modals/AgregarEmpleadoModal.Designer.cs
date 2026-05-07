@@ -42,7 +42,7 @@
             txtNombreCompleto.Location = new Point(20, 130);
             txtNombreCompleto.MaxLength = 100;
             txtNombreCompleto.Name = "txtNombreCompleto";
-            txtNombreCompleto.Size = new Size(340, 41);
+            txtNombreCompleto.Size = new Size(340, 34);
             txtNombreCompleto.TabIndex = 1;
             // 
             // btnGuardar
@@ -77,7 +77,7 @@
             lblNombreCompleto.Font = new Font("Segoe UI", 15F);
             lblNombreCompleto.Location = new Point(20, 88);
             lblNombreCompleto.Name = "lblNombreCompleto";
-            lblNombreCompleto.Size = new Size(229, 35);
+            lblNombreCompleto.Size = new Size(181, 28);
             lblNombreCompleto.TabIndex = 0;
             lblNombreCompleto.Text = "Nombre Completo:";
             // 
@@ -87,9 +87,9 @@
             lblTrabajo.Font = new Font("Segoe UI", 15F);
             lblTrabajo.Location = new Point(20, 177);
             lblTrabajo.Name = "lblTrabajo";
-            lblTrabajo.Size = new Size(51, 35);
+            lblTrabajo.Size = new Size(161, 28);
             lblTrabajo.TabIndex = 2;
-            lblTrabajo.Text = "De:";
+            lblTrabajo.Text = "Lugar de Trabajo:";
             // 
             // cmbTrabajo
             // 
@@ -98,7 +98,7 @@
             cmbTrabajo.FormattingEnabled = true;
             cmbTrabajo.Location = new Point(20, 215);
             cmbTrabajo.Name = "cmbTrabajo";
-            cmbTrabajo.Size = new Size(247, 43);
+            cmbTrabajo.Size = new Size(247, 36);
             cmbTrabajo.TabIndex = 6;
             // 
             // AgregarEmpleadoModal
@@ -115,7 +115,7 @@
             MinimizeBox = false;
             Name = "AgregarEmpleadoModal";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Agregar Empleado";
+            Text = "Agregar Colaborador";
             Load += AgregarEmpleadoModal_Load;
             ResumeLayout(false);
             PerformLayout();

@@ -51,11 +51,10 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             gridEmpleados.DefaultCellStyle = dataGridViewCellStyle1;
-            gridEmpleados.Location = new Point(74, 262);
-            gridEmpleados.Margin = new Padding(3, 4, 3, 4);
+            gridEmpleados.Location = new Point(65, 196);
             gridEmpleados.Name = "gridEmpleados";
             gridEmpleados.RowHeadersWidth = 51;
-            gridEmpleados.Size = new Size(945, 527);
+            gridEmpleados.Size = new Size(827, 395);
             gridEmpleados.TabIndex = 0;
             gridEmpleados.CellContentDoubleClick += gridEmpleados_CellContentDoubleClick;
             // 
@@ -63,19 +62,18 @@
             // 
             lblBuscarNombre.AutoSize = true;
             lblBuscarNombre.Font = new Font("Segoe UI", 15F);
-            lblBuscarNombre.Location = new Point(74, 120);
+            lblBuscarNombre.Location = new Point(65, 90);
             lblBuscarNombre.Name = "lblBuscarNombre";
-            lblBuscarNombre.Size = new Size(239, 35);
+            lblBuscarNombre.Size = new Size(186, 28);
             lblBuscarNombre.TabIndex = 1;
             lblBuscarNombre.Text = "Buscar por Nombre:";
             // 
             // txtNombre
             // 
             txtNombre.Font = new Font("Segoe UI", 15F);
-            txtNombre.Location = new Point(330, 117);
-            txtNombre.Margin = new Padding(3, 4, 3, 4);
+            txtNombre.Location = new Point(289, 88);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(267, 41);
+            txtNombre.Size = new Size(234, 34);
             txtNombre.TabIndex = 2;
             txtNombre.TextChanged += txtNombre_TextChanged;
             // 
@@ -83,21 +81,20 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F);
-            label1.Location = new Point(74, 182);
+            label1.Location = new Point(65, 136);
             label1.Name = "label1";
-            label1.Size = new Size(305, 35);
+            label1.Size = new Size(258, 28);
             label1.TabIndex = 3;
-            label1.Text = "Buscar por donde Trabaja:";
+            label1.Text = "Buscar por Lugar de Trabajo:";
             // 
             // cmbTrabajo
             // 
             cmbTrabajo.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTrabajo.Font = new Font("Segoe UI", 15F);
             cmbTrabajo.FormattingEnabled = true;
-            cmbTrabajo.Location = new Point(385, 179);
-            cmbTrabajo.Margin = new Padding(3, 4, 3, 4);
+            cmbTrabajo.Location = new Point(337, 134);
             cmbTrabajo.Name = "cmbTrabajo";
-            cmbTrabajo.Size = new Size(212, 43);
+            cmbTrabajo.Size = new Size(186, 36);
             cmbTrabajo.TabIndex = 4;
             cmbTrabajo.SelectedIndexChanged += cmbTrabajo_SelectedIndexChanged;
             // 
@@ -109,9 +106,10 @@
             btnRegresar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnRegresar.IconSize = 30;
             btnRegresar.ImageAlign = ContentAlignment.BottomLeft;
-            btnRegresar.Location = new Point(31, 25);
+            btnRegresar.Location = new Point(36, 28);
+            btnRegresar.Margin = new Padding(3, 2, 3, 2);
             btnRegresar.Name = "btnRegresar";
-            btnRegresar.Size = new Size(149, 45);
+            btnRegresar.Size = new Size(124, 39);
             btnRegresar.TabIndex = 6;
             btnRegresar.Text = "REGRESAR";
             btnRegresar.TextAlign = ContentAlignment.MiddleRight;
@@ -126,9 +124,10 @@
             btnNuevo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnNuevo.IconSize = 30;
             btnNuevo.ImageAlign = ContentAlignment.BottomLeft;
-            btnNuevo.Location = new Point(896, 212);
+            btnNuevo.Location = new Point(784, 153);
+            btnNuevo.Margin = new Padding(3, 2, 3, 2);
             btnNuevo.Name = "btnNuevo";
-            btnNuevo.Size = new Size(123, 43);
+            btnNuevo.Size = new Size(108, 38);
             btnNuevo.TabIndex = 7;
             btnNuevo.Text = "Nuevo";
             btnNuevo.TextAlign = ContentAlignment.MiddleRight;
@@ -137,9 +136,9 @@
             // 
             // frmEmpleados
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1107, 884);
+            ClientSize = new Size(969, 663);
             Controls.Add(btnNuevo);
             Controls.Add(btnRegresar);
             Controls.Add(cmbTrabajo);
@@ -147,7 +146,6 @@
             Controls.Add(txtNombre);
             Controls.Add(lblBuscarNombre);
             Controls.Add(gridEmpleados);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "frmEmpleados";
             Text = "Colaboradores";
             WindowState = FormWindowState.Maximized;

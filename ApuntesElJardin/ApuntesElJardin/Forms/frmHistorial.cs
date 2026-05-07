@@ -1,0 +1,35 @@
+﻿using ApuntesEmpleados.BL;
+using ApuntesEmpleados.DAL.BD;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+
+namespace ApuntesElJardin.Forms
+{
+    public partial class frmHistorial : Form
+    {
+        public frmHistorial()
+        {
+            InitializeComponent();
+        }
+
+        private HistorialBL historialBL = new HistorialBL();
+        private List<Historial> listaHistorial;
+
+        private void frmHistorial_Load(object sender, EventArgs e)
+        {
+            CagarGrid();
+        }
+
+        private void CagarGrid()
+        {
+            listaHistorial = historialBL.Historial_ObtenerTodos();
+            gridHistorial.DataSource = null;
+            gridHistorial.DataSource = listaHistorial;
+        }
+    }
+}

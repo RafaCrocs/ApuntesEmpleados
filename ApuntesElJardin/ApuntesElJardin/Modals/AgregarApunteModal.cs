@@ -25,7 +25,6 @@ namespace ApuntesElJardin.Modals
         private void BorrarCampos()
         {
             txtNombre.Text = string.Empty;
-            lblIdEmpleado.Text = "";
             txtMonto.Text = string.Empty;
             txtDetalle.Text = string.Empty;
             lblCadaUno.Text = string.Empty;
@@ -50,7 +49,7 @@ namespace ApuntesElJardin.Modals
                 {
                     nuevoApunte = new Apunte()
                     {
-                        Origen = "MiniMarket",
+                        Origen = "Heladeria",
                         IdEmpleado = codigos[i],
                         Monto = decimal.TryParse(txtMonto.Text, NumberStyles.Currency, new CultureInfo("es-CR"), out decimal monto) ? monto : 0,
                         Detalle = txtDetalle.Text,
@@ -61,7 +60,7 @@ namespace ApuntesElJardin.Modals
                 {
                     nuevoApunte = new Apunte()
                     {
-                        Origen = "MiniMarket",
+                        Origen = "Heladeria",
                         IdEmpleado = codigos[i],
                         Monto = decimal.TryParse(lblCadaUno.Text.Replace("C/U: ", ""), NumberStyles.Currency, new CultureInfo("es-CR"), out decimal monto) ? monto : 0,
                         Detalle = txtDetalle.Text,
@@ -80,24 +79,6 @@ namespace ApuntesElJardin.Modals
             }
             BorrarCampos();
             codigos.Clear();
-        }
-
-        private void txtMonto_Leave(object sender, EventArgs e)
-        {
-            decimal.TryParse(txtMonto.Text, NumberStyles.Currency, new CultureInfo("es-CR"), out decimal monto);
-            txtMonto.Text = monto.ToString("C", new CultureInfo("es-CR"));
-            if (cantidad > 1)
-            {
-                lblCadaUno.Text = "C/U: ";
-                decimal.TryParse(txtMonto.Text, NumberStyles.Currency, new CultureInfo("es-CR"), out decimal monto2);
-                decimal CU = monto2 / cantidad;
-                lblCadaUno.Text += CU.ToString("C", new CultureInfo("es-CR"));
-            }
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -132,7 +113,6 @@ namespace ApuntesElJardin.Modals
                     codigos.Add(modal.empleado.IdEmpleado);
                     cantidad++;
                     txtNombre.Text += modal.empleado.NombreCompleto;
-                    lblIdEmpleado.Text += modal.empleado.IdEmpleado.ToString();
                     lblCantidad.Text = "Cantidad: ";
                     lblCantidad.Text += cantidad;
                 }
@@ -151,6 +131,24 @@ namespace ApuntesElJardin.Modals
         {
             frmApuntes frmApuntes = new frmApuntes();
             frmApuntes.Show();
+        }
+
+        private void txtMonto_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtMonto_Leave(object sender, EventArgs e)
+        {
+            decimal.TryParse(txtMonto.Text, NumberStyles.Currency, new CultureInfo("es-CR"), out decimal monto);
+            txtMonto.Text = monto.ToString("C", new CultureInfo("es-CR"));
+            if (cantidad > 1)
+            {
+                lblCadaUno.Text = "C/U: ";
+                decimal.TryParse(txtMonto.Text, NumberStyles.Currency, new CultureInfo("es-CR"), out decimal monto2);
+                decimal CU = monto2 / cantidad;
+                lblCadaUno.Text += CU.ToString("C", new CultureInfo("es-CR"));
+            }
+
         }
     }
 }
