@@ -52,7 +52,7 @@ namespace ApuntesElJardin.Forms
 
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
-            if (txtNombre.Text.Length > 0)
+            if (txtNombre.Text.Length >= 3)
             {
                 var filtrados = apuntesMiniMarket.FindAll(a => a.NombreCompleto.IndexOf(txtNombre.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                 gridApuntes.DataSource = filtrados;

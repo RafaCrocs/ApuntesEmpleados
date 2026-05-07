@@ -186,7 +186,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Control;
+            BackColor = SystemColors.InactiveCaption;
             ClientSize = new Size(578, 503);
             Controls.Add(iconButton1);
             Controls.Add(btnbuscar);

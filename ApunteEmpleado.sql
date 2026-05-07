@@ -148,10 +148,11 @@ select
 	h.SePagoEn,
 	h.FechaPago
 	from HistorialPagos h
-	left join Empleados e on h.IdEmpleado = e.IdEmpleado;
+	left join Empleados e on h.IdEmpleado = e.IdEmpleado
 GO
 
-select * from vw_VerHistorialPagos;
+select * from vw_VerHistorialPagos
+order by FechaPago desc;
 go
 
 create or alter view vw_ApuntesEmpleadosMiniMarket
@@ -251,3 +252,10 @@ BEGIN
 	where e.IdEmpleado = @IdEmpleado and a.IdApunte is not null;
 END;
 GO
+
+select * from vw_ApuntesEmpleadosMiniMarket;
+select * from vw_ApuntesEmpleadosSouvenir;
+select * from vw_ApuntesEmpleadosRestaurante;
+select * from vw_ApuntesEmpleadosHeladeria;
+
+exec sp_ObtenerApuntesEmpleados;

@@ -13,7 +13,7 @@ namespace ApuntesEmpleados.DAL.BD
         {
             List<Historial> historial = new List<Historial>();
 
-            string query = "select * from vw_VerHistorialPagos";
+            string query = "select * from vw_VerHistorialPagos order by FechaPago desc";
 
             using (SqlConnection conn = new SqlConnection(Conexion.Cadena))
             {

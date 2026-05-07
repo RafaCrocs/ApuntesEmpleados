@@ -32,14 +32,14 @@
             txtNombre = new TextBox();
             lblBuscarNombre = new Label();
             gridHistorial = new DataGridView();
-            label1 = new Label();
-            dateTimePicker1 = new DateTimePicker();
             IdPago = new DataGridViewTextBoxColumn();
             NombreCompleto = new DataGridViewTextBoxColumn();
             Monto = new DataGridViewTextBoxColumn();
             Detalle = new DataGridViewTextBoxColumn();
             SePagoEn = new DataGridViewTextBoxColumn();
             Fecha = new DataGridViewTextBoxColumn();
+            label1 = new Label();
+            dateTimePicker1 = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)gridHistorial).BeginInit();
             SuspendLayout();
             // 
@@ -50,6 +50,7 @@
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(234, 43);
             txtNombre.TabIndex = 20;
+            txtNombre.TextChanged += txtNombre_TextChanged;
             // 
             // lblBuscarNombre
             // 
@@ -79,25 +80,6 @@
             gridHistorial.RowHeadersWidth = 51;
             gridHistorial.Size = new Size(1285, 589);
             gridHistorial.TabIndex = 18;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 20F);
-            label1.Location = new Point(93, 112);
-            label1.Name = "label1";
-            label1.Size = new Size(222, 37);
-            label1.TabIndex = 21;
-            label1.Text = "Buscar por Fecha:";
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Font = new Font("Segoe UI", 20F);
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(362, 112);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(184, 43);
-            dateTimePicker1.TabIndex = 22;
             // 
             // IdPago
             // 
@@ -147,10 +129,30 @@
             Fecha.Name = "Fecha";
             Fecha.Width = 200;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 20F);
+            label1.Location = new Point(93, 112);
+            label1.Name = "label1";
+            label1.Size = new Size(222, 37);
+            label1.TabIndex = 21;
+            label1.Text = "Buscar por Fecha:";
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Font = new Font("Segoe UI", 20F);
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
+            dateTimePicker1.Location = new Point(362, 112);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(184, 43);
+            dateTimePicker1.TabIndex = 22;
+            // 
             // frmHistorial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.InactiveCaption;
             ClientSize = new Size(1468, 811);
             Controls.Add(dateTimePicker1);
             Controls.Add(label1);
@@ -158,6 +160,7 @@
             Controls.Add(lblBuscarNombre);
             Controls.Add(gridHistorial);
             Name = "frmHistorial";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmHistorial";
             Load += frmHistorial_Load;
             ((System.ComponentModel.ISupportInitialize)gridHistorial).EndInit();

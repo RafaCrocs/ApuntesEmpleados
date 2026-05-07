@@ -31,5 +31,18 @@ namespace ApuntesElJardin.Forms
             gridHistorial.DataSource = null;
             gridHistorial.DataSource = listaHistorial;
         }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNombre.Text.Length >= 3)
+            {
+                var filtrados = listaHistorial.FindAll(a => a.NombreCompleto.IndexOf(txtNombre.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                gridHistorial.DataSource = filtrados;
+            }
+            else
+            {
+                gridHistorial.DataSource = listaHistorial;
+            }
+        }
     }
 }
