@@ -166,6 +166,7 @@ AS
 BEGIN
 	select
 		e.NombreCompleto,
+		e.IdEmpleado,
 		e.Trabajo,
 		SUM(CASE WHEN a.Origen = 'MiniMarket' THEN a.Monto ELSE 0 END) AS MiniMarket,
 		SUM(CASE WHEN a.Origen = 'Souvenir' THEN a.Monto ELSE 0 END) AS Souvenir,
@@ -175,9 +176,10 @@ BEGIN
 	from Empleados e
 	left join Apuntes a on e.IdEmpleado = a.IdEmpleado
 	where a.IdApunte is not null
-	group by e.NombreCompleto, e.Trabajo;
+	group by e.NombreCompleto, e.Trabajo,e.IdEmpleado;
 END;
 GO
+
 
 select * from vw_ApuntesEmpleadosMiniMarket;
 select * from vw_ApuntesEmpleadosSouvenir;
@@ -189,3 +191,5 @@ exec sp_ObtenerApuntesEmpleados;
 select * from Empleados
 delete from Empleados where IdEmpleado > 3
 delete from Apuntes
+
+select * from Apuntes where IdEmpleado = 26;

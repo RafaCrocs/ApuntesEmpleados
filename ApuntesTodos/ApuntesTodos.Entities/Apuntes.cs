@@ -3,6 +3,7 @@
     public class Apuntes
     {
         public string NombreCompleto { get; set; }
+        public int IdEmpleado { get; set; }
         public string Trabajo { get; set; }
         public decimal MiniMarket { get; set; }
         public decimal Souvenir { get; set; }

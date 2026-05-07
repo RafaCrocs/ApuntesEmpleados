@@ -22,6 +22,7 @@ namespace ApuntesTodos.DAL
                             Apuntes apunte = new Apuntes
                             {
                                 NombreCompleto = reader["NombreCompleto"].ToString(),
+                                IdEmpleado = Convert.ToInt32(reader["IdEmpleado"]),
                                 Trabajo = reader["Trabajo"].ToString(),
                                 MiniMarket = Convert.ToDecimal(reader["MiniMarket"]),
                                 Souvenir = Convert.ToDecimal(reader["Souvenir"]),
@@ -36,5 +37,59 @@ namespace ApuntesTodos.DAL
             }
             return apuntes;
         }
+
+        public bool Eliminar_Apuntes_Empleado(int IdEmpleado)
+        {
+            bool resultado = false;
+            string query = @"Delete from Apuntes where IdEmpleado = @IdEmpleado";
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Conexion.Cadena))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@IdEmpleado", IdEmpleado);
+
+                        resultado = cmd.ExecuteNonQuery() > 0;
+
+                    }
+                }
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Error al pagar el apunte: {ex.Message}");
+            }
+
+            return resultado;
+        }
+
+        public bool Pagar_Todos()
+        {
+            bool resultado = false;
+            string query = @"Delete from Apuntes";
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Conexion.Cadena))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+
+                        resultado = cmd.ExecuteNonQuery() > 0;
+
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al pagar los apuntes: {ex.Message}");
+            }
+
+            return resultado;
+        }
+
     }
 }

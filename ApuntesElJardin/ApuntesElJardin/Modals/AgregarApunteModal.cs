@@ -33,46 +33,12 @@ namespace ApuntesElJardin.Modals
             cantidad = 0;
         }
         int cantidad = 0;
-        private void btnBuscarEmpleado_Click(object sender, EventArgs e)
-        {
-            frmEmpleados modal = new frmEmpleados();
-            modal.ShowDialog();
-            if (modal.DialogResult == DialogResult.OK)
-            {
-                if (txtNombre.Text.Contains(modal.empleado.NombreCompleto.ToString()))
-                {
-                    MessageBox.Show("Esa persona ya esta agregada", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                if (modal.empleado != null)
-                {
-                    if (txtNombre.Text != "")
-                    {
-                        txtNombre.Text += ", ";
-                    }
-                    codigos.Add(modal.empleado.IdEmpleado);
-                    cantidad++;
-                    txtNombre.Text += modal.empleado.NombreCompleto;
-                    lblIdEmpleado.Text += modal.empleado.IdEmpleado.ToString();
-                    lblCantidad.Text = "Cantidad: ";
-                    lblCantidad.Text += cantidad;
-                }
-                if (cantidad > 1 && txtMonto.Text != string.Empty)
-                {
-                    lblCadaUno.Text = "C/U: ";
-                    decimal.TryParse(txtMonto.Text, NumberStyles.Currency, new CultureInfo("es-CR"), out decimal monto2);
-                    decimal CU = monto2 / cantidad;
-                    lblCadaUno.Text += CU.ToString("C", new CultureInfo("es-CR"));
-                }
-
-            }
-        }
 
         List<int> codigos = new List<int>();
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if(txtDetalle.Text == string.Empty)
+            if (txtDetalle.Text == string.Empty)
             {
                 MessageBox.Show("Agregue un detalle", "Detalle", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -113,6 +79,7 @@ namespace ApuntesElJardin.Modals
                 }
             }
             BorrarCampos();
+            codigos.Clear();
         }
 
         private void txtMonto_Leave(object sender, EventArgs e)
@@ -136,6 +103,54 @@ namespace ApuntesElJardin.Modals
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             BorrarCampos();
+        }
+
+        private void btnVerApuntes_Click(object sender, EventArgs e)
+        {
+            frmApuntes frmApuntes = new frmApuntes();
+            frmApuntes.Show();
+        }
+
+        private void btnbuscar_Click(object sender, EventArgs e)
+        {
+
+            frmEmpleados modal = new frmEmpleados();
+            modal.ShowDialog();
+            if (modal.DialogResult == DialogResult.OK)
+            {
+                if (txtNombre.Text.Contains(modal.empleado.NombreCompleto.ToString()))
+                {
+                    MessageBox.Show("Esa persona ya esta agregada", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (modal.empleado != null)
+                {
+                    if (txtNombre.Text != "")
+                    {
+                        txtNombre.Text += ", ";
+                    }
+                    codigos.Add(modal.empleado.IdEmpleado);
+                    cantidad++;
+                    txtNombre.Text += modal.empleado.NombreCompleto;
+                    lblIdEmpleado.Text += modal.empleado.IdEmpleado.ToString();
+                    lblCantidad.Text = "Cantidad: ";
+                    lblCantidad.Text += cantidad;
+                }
+                if (cantidad > 1 && txtMonto.Text != string.Empty)
+                {
+                    lblCadaUno.Text = "C/U: ";
+                    decimal.TryParse(txtMonto.Text, NumberStyles.Currency, new CultureInfo("es-CR"), out decimal monto2);
+                    decimal CU = monto2 / cantidad;
+                    lblCadaUno.Text += CU.ToString("C", new CultureInfo("es-CR"));
+                }
+
+            }
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            frmApuntes frmApuntes = new frmApuntes();
+            frmApuntes.Show();
         }
     }
 }

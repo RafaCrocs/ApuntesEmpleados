@@ -31,7 +31,7 @@ namespace ApuntesTodos
 
         private void gridApuntes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (gridApuntes.Columns[e.ColumnIndex].Name != "NombreCompleto" && gridApuntes.Columns[e.ColumnIndex].Name != "Trabajo")
+            if (gridApuntes.Columns[e.ColumnIndex].Name != "NombreCompleto" && gridApuntes.Columns[e.ColumnIndex].Name != "Trabajo" && gridApuntes.Columns[e.ColumnIndex].Name != "Pagado")
             {
                 decimal valor = Convert.ToDecimal(e.Value);
                 e.Value = valor.ToString("C", new System.Globalization.CultureInfo("es-CR"));
@@ -68,6 +68,44 @@ namespace ApuntesTodos
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             CargarGrid();
+        }
+
+        private void gridApuntes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > 0)
+            {
+                return;
+            }
+            if (gridApuntes.Columns[e.ColumnIndex].Name == "Pagado")
+            {
+                int idSelecionado = Convert.ToInt32(gridApuntes.Rows[e.RowIndex].Cells["IdEmpleado"].Value);
+                if (apuntesBL.Eliminar_Apuntes_Empleado(idSelecionado))
+                {
+                    MessageBox.Show("Apuntes eliminados correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarGrid();
+                }
+                else
+                {
+                    MessageBox.Show("Algo malio sal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+
+        private void btnPagarTodos_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Seguro que quiere pagar todos los apuntes existentes?", "Pagar Todos", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                if(apuntesBL.Pagar_Todos())
+                {
+                    MessageBox.Show("Apuntes eliminados correctamente", "Apuntes Pagados", MessageBoxButtons.OK);
+                    CargarGrid();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudieron eliminar los apuntes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

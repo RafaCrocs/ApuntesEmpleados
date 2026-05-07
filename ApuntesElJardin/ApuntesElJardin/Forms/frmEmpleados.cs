@@ -36,7 +36,7 @@ namespace ApuntesElJardin.Forms
 
         private void CargarGrid()
         {
-            
+
             empleados = empleadosBL.Empleados_ObtenerTodos();
             gridEmpleados.DataSource = null;
             configurarColumnas();
@@ -96,11 +96,17 @@ namespace ApuntesElJardin.Forms
             }
         }
 
-        private void btnNuevoEmpleado_Click(object sender, EventArgs e)
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
         {
             AgregarEmpleadoModal modal = new AgregarEmpleadoModal();
             modal.ShowDialog();
             CargarGrid();
+
         }
     }
 }

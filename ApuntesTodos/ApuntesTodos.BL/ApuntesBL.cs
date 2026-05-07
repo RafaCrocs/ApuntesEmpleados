@@ -13,5 +13,15 @@ namespace ApuntesTodos.BL
             return apuntesDAL.Apuntes_ObtenerTodos();
         }
 
+        public bool Eliminar_Apuntes_Empleado(int IdEmpleado)
+        {
+            return apuntesDAL.Eliminar_Apuntes_Empleado(IdEmpleado);
+        }
+
+        public bool Pagar_Todos()
+        {
+            return apuntesDAL.Pagar_Todos();
+        }
+
     }
 }
