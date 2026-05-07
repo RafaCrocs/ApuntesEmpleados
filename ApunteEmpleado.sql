@@ -1,8 +1,8 @@
 --Base de datos para apuntes de empleados en la empresa
-CREATE DATABASE ApuntesEmpleados;
+CREATE DATABASE ApuntesEmpleados3;
 GO
 
-USE ApuntesEmpleados;
+USE ApuntesEmpleados3;
 GO
 
 CREATE TABLE Empleados (
@@ -23,6 +23,16 @@ create table Apuntes (
 	CONSTRAINT FK_Empleado FOREIGN KEY (IdEmpleado) REFERENCES Empleados(IdEmpleado)
 );
 GO
+
+create table HistorialPagos (
+	IdPago INT PRIMARY KEY IDENTITY(1,1),
+	IdEmpleado INT NOT NULL,
+	Monto DECIMAL(10, 2) NOT NULL,
+	Detalle NVARCHAR(200) NOT NULL,
+	SePagoEn NVARCHAR(100) NOT NULL,
+	FechaPago DATETIME NOT NULL default GETDATE(),
+	CONSTRAINT FK_EmpleadoPago FOREIGN KEY (IdEmpleado) REFERENCES Empleados(IdEmpleado)
+);
 
 -- Insertar datos de ejemplo
 INSERT INTO Empleados (NombreCompleto, Trabajo) VALUES ('Jose Cruz', 'Souvenir'),('Wenderlyn', 'MiniMarket'), ('Jared', 'Restaurante');
@@ -65,7 +75,7 @@ BEGIN
 		SET @Resultado = 0
 		RETURN
 	END
-	if @Origen NOT IN ('MiniMarket', 'Souvenir', 'Restaurante')
+	if @Origen NOT IN ('MiniMarket', 'Souvenir', 'Restaurante', 'Heladeria')
 	BEGIN
 		SET @Mensaje = 'El origen no es válido.'
 		SET @Resultado = 0
@@ -98,6 +108,50 @@ exec sp_InsertarApunte @IdEmpleado = 2, @Origen = 'Souvenir', @Monto = 6500, @De
 exec sp_InsertarApunte @IdEmpleado = 1, @Origen = 'MiniMarket', @Monto = 500, @Detalle = 'Bebidas', @Mensaje = @Mensaje OUTPUT, @Resultado = @Resultado OUTPUT;
 exec sp_InsertarApunte @IdEmpleado = 3, @Origen = 'MiniMarket', @Monto = 1200, @Detalle = 'Frutas', @Mensaje = @Mensaje OUTPUT, @Resultado = @Resultado OUTPUT;
 exec sp_InsertarApunte @IdEmpleado = 1, @Origen = 'Restaurante', @Monto = 3000, @Detalle = 'Cena', @Mensaje = @Mensaje OUTPUT, @Resultado = @Resultado OUTPUT;
+go
+
+create or alter procedure sp_PagarApunte
+	@IdApunte INT,
+	@SePagoEn NVARCHAR(20),
+	@Mensaje NVARCHAR(200) OUTPUT,
+	@Resultado bit OUTPUT
+AS
+BEGIN
+	IF NOT EXISTS (SELECT 1 FROM Apuntes WHERE IdApunte = @IdApunte)
+	BEGIN
+		SET @Mensaje = 'El apunte no existe.'
+		SET @Resultado = 0
+		RETURN
+	END
+
+	insert into HistorialPagos (IdEmpleado, Monto, Detalle, SePagoEn)
+	select IdEmpleado, Monto, Detalle, @SePagoEn from Apuntes where IdApunte = @IdApunte;
+
+
+	DELETE FROM Apuntes WHERE IdApunte = @IdApunte;
+	SET @Mensaje = 'Apunte pagado correctamente.'
+	SET @Resultado = 1
+END;
+GO
+--Probar Pagar Apunte
+declare @Mensaje NVARCHAR(200), @Resultado bit;
+exec sp_PagarApunte @IdApunte = 1, @SePagoEn = 'MiniMarket', @Mensaje = @Mensaje OUTPUT, @Resultado = @Resultado OUTPUT;
+go
+
+create or alter view vw_VerHistorialPagos
+AS
+select
+	h.IdPago,
+	e.NombreCompleto,
+	h.Monto,
+	h.Detalle,
+	h.SePagoEn,
+	h.FechaPago
+	from HistorialPagos h
+	left join Empleados e on h.IdEmpleado = e.IdEmpleado;
+GO
+
+select * from vw_VerHistorialPagos;
 go
 
 create or alter view vw_ApuntesEmpleadosMiniMarket
@@ -160,7 +214,7 @@ select
 go
 
 
--- Procedimiento almaenado para obtener todos los empleados con sus apuntes, quiero que sumen el monto total de cada origen por empleado, pero solo una vez
+-- Procedimiento almaenado para obtener todos los empleados con sus apuntes
 create or alter procedure sp_ObtenerApuntesEmpleados
 AS
 BEGIN
@@ -180,16 +234,20 @@ BEGIN
 END;
 GO
 
-
-select * from vw_ApuntesEmpleadosMiniMarket;
-select * from vw_ApuntesEmpleadosSouvenir;
-select * from vw_ApuntesEmpleadosRestaurante;
-select * from vw_ApuntesEmpleadosHeladeria;
-go
-exec sp_ObtenerApuntesEmpleados;
-
-select * from Empleados
-delete from Empleados where IdEmpleado > 3
-delete from Apuntes
-
-select * from Apuntes where IdEmpleado = 26;
+create or alter procedure sp_DetalleApuntes
+	@IdEmpleado INT
+AS
+BEGIN
+	select
+		a.IdApunte,
+		e.NombreCompleto,
+		e.Trabajo,
+		a.Origen,
+		a.Monto,
+		a.Detalle,
+		a.Fecha
+	from Empleados e
+	left join Apuntes a on e.IdEmpleado = a.IdEmpleado
+	where e.IdEmpleado = @IdEmpleado and a.IdApunte is not null;
+END;
+GO

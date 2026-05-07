@@ -27,11 +27,14 @@ namespace ApuntesTodos
         {
             CargarGrid();
             CargarCombos();
+            gridApuntes.RowsDefaultCellStyle.BackColor = Color.LightBlue;
+            gridApuntes.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+            gridApuntes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
         private void gridApuntes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (gridApuntes.Columns[e.ColumnIndex].Name != "NombreCompleto" && gridApuntes.Columns[e.ColumnIndex].Name != "Trabajo" && gridApuntes.Columns[e.ColumnIndex].Name != "Pagado")
+            if (gridApuntes.Columns[e.ColumnIndex].Name != "NombreCompleto" && gridApuntes.Columns[e.ColumnIndex].Name != "Trabajo" && gridApuntes.Columns[e.ColumnIndex].Name != "Pagado" && gridApuntes.Columns[e.ColumnIndex].Name != "Detalles")
             {
                 decimal valor = Convert.ToDecimal(e.Value);
                 e.Value = valor.ToString("C", new System.Globalization.CultureInfo("es-CR"));

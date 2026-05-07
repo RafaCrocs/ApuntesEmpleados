@@ -31,6 +31,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             gridApuntes = new DataGridView();
             Pagado = new DataGridViewButtonColumn();
+            Detalles = new DataGridViewButtonColumn();
             NombreCompleto = new DataGridViewTextBoxColumn();
             IdEmpleado = new DataGridViewTextBoxColumn();
             Trabajo = new DataGridViewTextBoxColumn();
@@ -52,7 +53,7 @@
             // 
             gridApuntes.BackgroundColor = SystemColors.Control;
             gridApuntes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gridApuntes.Columns.AddRange(new DataGridViewColumn[] { Pagado, NombreCompleto, IdEmpleado, Trabajo, MiniMarket, Souvenir, Restaurante, Heladeria, Total });
+            gridApuntes.Columns.AddRange(new DataGridViewColumn[] { Pagado, Detalles, NombreCompleto, IdEmpleado, Trabajo, MiniMarket, Souvenir, Restaurante, Heladeria, Total });
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Window;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 14F);
@@ -61,11 +62,10 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             gridApuntes.DefaultCellStyle = dataGridViewCellStyle1;
-            gridApuntes.Location = new Point(65, 203);
-            gridApuntes.Margin = new Padding(3, 4, 3, 4);
+            gridApuntes.Location = new Point(57, 152);
             gridApuntes.Name = "gridApuntes";
             gridApuntes.RowHeadersWidth = 51;
-            gridApuntes.Size = new Size(1289, 564);
+            gridApuntes.Size = new Size(1128, 423);
             gridApuntes.TabIndex = 0;
             gridApuntes.CellContentClick += gridApuntes_CellContentClick;
             gridApuntes.CellFormatting += gridApuntes_CellFormatting;
@@ -78,6 +78,13 @@
             Pagado.Text = "Pagado";
             Pagado.UseColumnTextForButtonValue = true;
             Pagado.Width = 125;
+            // 
+            // Detalles
+            // 
+            Detalles.HeaderText = "";
+            Detalles.Name = "Detalles";
+            Detalles.Text = "Detalles";
+            Detalles.UseColumnTextForButtonValue = true;
             // 
             // NombreCompleto
             // 
@@ -148,10 +155,9 @@
             // 
             cmbTrabajo.Font = new Font("Segoe UI", 15F);
             cmbTrabajo.FormattingEnabled = true;
-            cmbTrabajo.Location = new Point(409, 144);
-            cmbTrabajo.Margin = new Padding(3, 4, 3, 4);
+            cmbTrabajo.Location = new Point(358, 108);
             cmbTrabajo.Name = "cmbTrabajo";
-            cmbTrabajo.Size = new Size(212, 43);
+            cmbTrabajo.Size = new Size(186, 36);
             cmbTrabajo.TabIndex = 8;
             cmbTrabajo.SelectedIndexChanged += cmbTrabajo_SelectedIndexChanged;
             // 
@@ -159,19 +165,18 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F);
-            label1.Location = new Point(80, 147);
+            label1.Location = new Point(70, 110);
             label1.Name = "label1";
-            label1.Size = new Size(327, 35);
+            label1.Size = new Size(254, 28);
             label1.TabIndex = 7;
             label1.Text = "Buscar por lugar de Trabajo:";
             // 
             // txtNombre
             // 
             txtNombre.Font = new Font("Segoe UI", 15F);
-            txtNombre.Location = new Point(354, 78);
-            txtNombre.Margin = new Padding(3, 4, 3, 4);
+            txtNombre.Location = new Point(310, 58);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(267, 41);
+            txtNombre.Size = new Size(234, 34);
             txtNombre.TabIndex = 6;
             txtNombre.TextChanged += txtNombre_TextChanged;
             // 
@@ -179,19 +184,18 @@
             // 
             lblBuscarNombre.AutoSize = true;
             lblBuscarNombre.Font = new Font("Segoe UI", 15F);
-            lblBuscarNombre.Location = new Point(80, 84);
+            lblBuscarNombre.Location = new Point(70, 63);
             lblBuscarNombre.Name = "lblBuscarNombre";
-            lblBuscarNombre.Size = new Size(239, 35);
+            lblBuscarNombre.Size = new Size(186, 28);
             lblBuscarNombre.TabIndex = 5;
             lblBuscarNombre.Text = "Buscar por Nombre:";
             // 
             // btnActualizar
             // 
-            btnActualizar.BackColor = Color.FromArgb(128, 255, 128);
-            btnActualizar.Location = new Point(1210, 147);
-            btnActualizar.Margin = new Padding(3, 4, 3, 4);
+            btnActualizar.BackColor = Color.FromArgb(192, 255, 192);
+            btnActualizar.Location = new Point(1059, 110);
             btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(159, 48);
+            btnActualizar.Size = new Size(139, 36);
             btnActualizar.TabIndex = 9;
             btnActualizar.Text = "ACTUALIZAR";
             btnActualizar.UseVisualStyleBackColor = false;
@@ -199,11 +203,10 @@
             // 
             // btnPagarTodos
             // 
-            btnPagarTodos.BackColor = Color.Goldenrod;
-            btnPagarTodos.Location = new Point(1034, 147);
-            btnPagarTodos.Margin = new Padding(3, 4, 3, 4);
+            btnPagarTodos.BackColor = Color.FromArgb(255, 224, 192);
+            btnPagarTodos.Location = new Point(905, 110);
             btnPagarTodos.Name = "btnPagarTodos";
-            btnPagarTodos.Size = new Size(159, 48);
+            btnPagarTodos.Size = new Size(139, 36);
             btnPagarTodos.TabIndex = 10;
             btnPagarTodos.Text = "PAGAR TODOS";
             btnPagarTodos.UseVisualStyleBackColor = false;
@@ -211,9 +214,9 @@
             // 
             // ApuntesTodos
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1489, 916);
+            ClientSize = new Size(1303, 687);
             Controls.Add(btnPagarTodos);
             Controls.Add(btnActualizar);
             Controls.Add(cmbTrabajo);
@@ -221,9 +224,8 @@
             Controls.Add(txtNombre);
             Controls.Add(lblBuscarNombre);
             Controls.Add(gridApuntes);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "ApuntesTodos";
-            Text = "Form1";
+            Text = "Apuntes Todos    v1.0.0";
             Load += ApuntesTodos_Load;
             ((System.ComponentModel.ISupportInitialize)gridApuntes).EndInit();
             ResumeLayout(false);
@@ -238,7 +240,9 @@
         private TextBox txtNombre;
         private Label lblBuscarNombre;
         private Button btnActualizar;
+        private Button btnPagarTodos;
         private DataGridViewButtonColumn Pagado;
+        private DataGridViewButtonColumn Detalles;
         private DataGridViewTextBoxColumn NombreCompleto;
         private DataGridViewTextBoxColumn IdEmpleado;
         private DataGridViewTextBoxColumn Trabajo;
@@ -247,6 +251,5 @@
         private DataGridViewTextBoxColumn Restaurante;
         private DataGridViewTextBoxColumn Heladeria;
         private DataGridViewTextBoxColumn Total;
-        private Button btnPagarTodos;
     }
 }
