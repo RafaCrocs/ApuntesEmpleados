@@ -49,7 +49,7 @@ namespace ApuntesElJardin.Modals
                 {
                     nuevoApunte = new Apunte()
                     {
-                        Origen = "MiniMarket",
+                        Origen = "Restaurante",
                         IdEmpleado = codigos[i],
                         Monto = decimal.TryParse(txtMonto.Text, NumberStyles.Currency, new CultureInfo("es-CR"), out decimal monto) ? monto : 0,
                         Detalle = txtDetalle.Text,
@@ -60,7 +60,7 @@ namespace ApuntesElJardin.Modals
                 {
                     nuevoApunte = new Apunte()
                     {
-                        Origen = "MiniMarket",
+                        Origen = "Restaurante",
                         IdEmpleado = codigos[i],
                         Monto = decimal.TryParse(lblCadaUno.Text.Replace("C/U: ", ""), NumberStyles.Currency, new CultureInfo("es-CR"), out decimal monto) ? monto : 0,
                         Detalle = txtDetalle.Text,
@@ -84,6 +84,7 @@ namespace ApuntesElJardin.Modals
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             BorrarCampos();
+            codigos.Clear();
         }
 
         private void btnVerApuntes_Click(object sender, EventArgs e)

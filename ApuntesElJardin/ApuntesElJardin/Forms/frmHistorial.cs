@@ -28,7 +28,6 @@ namespace ApuntesElJardin.Forms
         private void CagarGrid()
         {
             listaHistorial = historialBL.Historial_ObtenerTodos();
-            gridHistorial.DataSource = null;
             gridHistorial.DataSource = listaHistorial;
         }
 
