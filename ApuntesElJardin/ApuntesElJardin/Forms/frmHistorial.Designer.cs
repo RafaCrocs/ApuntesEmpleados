@@ -32,10 +32,6 @@
             txtNombre = new TextBox();
             lblBuscarNombre = new Label();
             gridHistorial = new DataGridView();
-            label1 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            label2 = new Label();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
             IdPago = new DataGridViewTextBoxColumn();
             NombreCompleto = new DataGridViewTextBoxColumn();
             Monto = new DataGridViewTextBoxColumn();
@@ -43,6 +39,10 @@
             Origen = new DataGridViewTextBoxColumn();
             SePagoEn = new DataGridViewTextBoxColumn();
             Fecha = new DataGridViewTextBoxColumn();
+            label1 = new Label();
+            dateTimePicker1 = new DateTimePicker();
+            label2 = new Label();
+            iconButton1 = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)gridHistorial).BeginInit();
             SuspendLayout();
             // 
@@ -81,9 +81,71 @@
             gridHistorial.DefaultCellStyle = dataGridViewCellStyle1;
             gridHistorial.Location = new Point(45, 246);
             gridHistorial.Name = "gridHistorial";
+            gridHistorial.ReadOnly = true;
             gridHistorial.RowHeadersWidth = 51;
             gridHistorial.Size = new Size(985, 380);
             gridHistorial.TabIndex = 18;
+            gridHistorial.CellFormatting += gridHistorial_CellFormatting;
+            // 
+            // IdPago
+            // 
+            IdPago.DataPropertyName = "IdPago";
+            IdPago.HeaderText = "IdApunte";
+            IdPago.MinimumWidth = 6;
+            IdPago.Name = "IdPago";
+            IdPago.ReadOnly = true;
+            IdPago.Visible = false;
+            IdPago.Width = 125;
+            // 
+            // NombreCompleto
+            // 
+            NombreCompleto.DataPropertyName = "NombreCompleto";
+            NombreCompleto.HeaderText = "NombreCompleto";
+            NombreCompleto.MinimumWidth = 6;
+            NombreCompleto.Name = "NombreCompleto";
+            NombreCompleto.ReadOnly = true;
+            NombreCompleto.Width = 300;
+            // 
+            // Monto
+            // 
+            Monto.DataPropertyName = "Monto";
+            Monto.HeaderText = "Monto";
+            Monto.MinimumWidth = 6;
+            Monto.Name = "Monto";
+            Monto.ReadOnly = true;
+            // 
+            // Detalle
+            // 
+            Detalle.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Detalle.DataPropertyName = "Detalle";
+            Detalle.HeaderText = "Detalle";
+            Detalle.MinimumWidth = 6;
+            Detalle.Name = "Detalle";
+            Detalle.ReadOnly = true;
+            // 
+            // Origen
+            // 
+            Origen.DataPropertyName = "Origen";
+            Origen.HeaderText = "Origen";
+            Origen.Name = "Origen";
+            Origen.ReadOnly = true;
+            Origen.Visible = false;
+            // 
+            // SePagoEn
+            // 
+            SePagoEn.DataPropertyName = "SePagoEn";
+            SePagoEn.HeaderText = "Se Pago En:";
+            SePagoEn.Name = "SePagoEn";
+            SePagoEn.ReadOnly = true;
+            SePagoEn.Width = 150;
+            // 
+            // Fecha
+            // 
+            Fecha.DataPropertyName = "FechaPago";
+            Fecha.HeaderText = "Fecha Pagado";
+            Fecha.MinimumWidth = 6;
+            Fecha.Name = "Fecha";
+            Fecha.ReadOnly = true;
             // 
             // label1
             // 
@@ -130,59 +192,6 @@
             iconButton1.TextAlign = ContentAlignment.TopCenter;
             iconButton1.UseVisualStyleBackColor = false;
             iconButton1.Click += iconButton1_Click;
-            // 
-            // IdPago
-            // 
-            IdPago.DataPropertyName = "IdPago";
-            IdPago.HeaderText = "IdApunte";
-            IdPago.MinimumWidth = 6;
-            IdPago.Name = "IdPago";
-            IdPago.Visible = false;
-            IdPago.Width = 125;
-            // 
-            // NombreCompleto
-            // 
-            NombreCompleto.DataPropertyName = "NombreCompleto";
-            NombreCompleto.HeaderText = "NombreCompleto";
-            NombreCompleto.MinimumWidth = 6;
-            NombreCompleto.Name = "NombreCompleto";
-            NombreCompleto.Width = 300;
-            // 
-            // Monto
-            // 
-            Monto.DataPropertyName = "Monto";
-            Monto.HeaderText = "Monto";
-            Monto.MinimumWidth = 6;
-            Monto.Name = "Monto";
-            // 
-            // Detalle
-            // 
-            Detalle.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Detalle.DataPropertyName = "Detalle";
-            Detalle.HeaderText = "Detalle";
-            Detalle.MinimumWidth = 6;
-            Detalle.Name = "Detalle";
-            // 
-            // Origen
-            // 
-            Origen.DataPropertyName = "Origen";
-            Origen.HeaderText = "Origen";
-            Origen.Name = "Origen";
-            Origen.Visible = false;
-            // 
-            // SePagoEn
-            // 
-            SePagoEn.DataPropertyName = "SePagoEn";
-            SePagoEn.HeaderText = "Se Pago En:";
-            SePagoEn.Name = "SePagoEn";
-            SePagoEn.Width = 150;
-            // 
-            // Fecha
-            // 
-            Fecha.DataPropertyName = "FechaPago";
-            Fecha.HeaderText = "Fecha Pagado";
-            Fecha.MinimumWidth = 6;
-            Fecha.Name = "Fecha";
             // 
             // frmHistorial
             // 

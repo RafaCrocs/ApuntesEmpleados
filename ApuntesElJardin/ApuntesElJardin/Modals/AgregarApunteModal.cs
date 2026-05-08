@@ -122,7 +122,7 @@ namespace ApuntesElJardin.Modals
                     lblCadaUno.Text = "C/U: ";
                     decimal.TryParse(txtMonto.Text, NumberStyles.Currency, new CultureInfo("es-CR"), out decimal monto2);
                     decimal CU = monto2 / cantidad;
-                    lblCadaUno.Text += CU.ToString("C", new CultureInfo("es-CR"));
+                    lblCadaUno.Text += CU.ToString("C0", new CultureInfo("es-CR"));
                 }
 
             }
@@ -141,13 +141,13 @@ namespace ApuntesElJardin.Modals
         private void txtMonto_Leave(object sender, EventArgs e)
         {
             decimal.TryParse(txtMonto.Text, NumberStyles.Currency, new CultureInfo("es-CR"), out decimal monto);
-            txtMonto.Text = monto.ToString("C", new CultureInfo("es-CR"));
+            txtMonto.Text = monto.ToString("C0", new CultureInfo("es-CR"));
             if (cantidad > 1)
             {
                 lblCadaUno.Text = "C/U: ";
                 decimal.TryParse(txtMonto.Text, NumberStyles.Currency, new CultureInfo("es-CR"), out decimal monto2);
                 decimal CU = monto2 / cantidad;
-                lblCadaUno.Text += CU.ToString("C", new CultureInfo("es-CR"));
+                lblCadaUno.Text += CU.ToString("C0", new CultureInfo("es-CR"));
             }
 
         }
