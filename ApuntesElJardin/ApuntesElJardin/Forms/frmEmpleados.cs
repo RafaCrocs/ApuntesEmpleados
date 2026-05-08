@@ -111,5 +111,10 @@ namespace ApuntesElJardin.Forms
             CargarGrid();
 
         }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

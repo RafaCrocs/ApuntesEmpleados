@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             gridEmpleados = new DataGridView();
             lblBuscarNombre = new Label();
             txtNombre = new TextBox();
             label1 = new Label();
             cmbTrabajo = new ComboBox();
-            btnRegresar = new FontAwesome.Sharp.IconButton();
             btnNuevo = new FontAwesome.Sharp.IconButton();
+            iconButton1 = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)gridEmpleados).BeginInit();
             SuspendLayout();
             // 
@@ -43,14 +43,14 @@
             // 
             gridEmpleados.BackgroundColor = SystemColors.Control;
             gridEmpleados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 14F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            gridEmpleados.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 14F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            gridEmpleados.DefaultCellStyle = dataGridViewCellStyle3;
             gridEmpleados.Location = new Point(65, 196);
             gridEmpleados.Name = "gridEmpleados";
             gridEmpleados.RowHeadersWidth = 51;
@@ -98,24 +98,6 @@
             cmbTrabajo.TabIndex = 4;
             cmbTrabajo.SelectedIndexChanged += cmbTrabajo_SelectedIndexChanged;
             // 
-            // btnRegresar
-            // 
-            btnRegresar.Font = new Font("Segoe UI", 12F);
-            btnRegresar.IconChar = FontAwesome.Sharp.IconChar.ArrowCircleLeft;
-            btnRegresar.IconColor = Color.Black;
-            btnRegresar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnRegresar.IconSize = 30;
-            btnRegresar.ImageAlign = ContentAlignment.BottomLeft;
-            btnRegresar.Location = new Point(36, 28);
-            btnRegresar.Margin = new Padding(3, 2, 3, 2);
-            btnRegresar.Name = "btnRegresar";
-            btnRegresar.Size = new Size(124, 39);
-            btnRegresar.TabIndex = 6;
-            btnRegresar.Text = "REGRESAR";
-            btnRegresar.TextAlign = ContentAlignment.MiddleRight;
-            btnRegresar.UseVisualStyleBackColor = true;
-            btnRegresar.Click += btnRegresar_Click;
-            // 
             // btnNuevo
             // 
             btnNuevo.Font = new Font("Segoe UI", 15F);
@@ -134,21 +116,40 @@
             btnNuevo.UseVisualStyleBackColor = true;
             btnNuevo.Click += btnNuevo_Click;
             // 
+            // iconButton1
+            // 
+            iconButton1.BackColor = Color.FromArgb(255, 192, 192);
+            iconButton1.Font = new Font("Segoe UI", 20F);
+            iconButton1.IconChar = FontAwesome.Sharp.IconChar.X;
+            iconButton1.IconColor = Color.Black;
+            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton1.IconSize = 40;
+            iconButton1.ImageAlign = ContentAlignment.BottomCenter;
+            iconButton1.Location = new Point(891, 22);
+            iconButton1.Name = "iconButton1";
+            iconButton1.Size = new Size(54, 52);
+            iconButton1.TabIndex = 25;
+            iconButton1.TextAlign = ContentAlignment.TopCenter;
+            iconButton1.UseVisualStyleBackColor = false;
+            iconButton1.Click += iconButton1_Click;
+            // 
             // frmEmpleados
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(969, 663);
+            ControlBox = false;
+            Controls.Add(iconButton1);
             Controls.Add(btnNuevo);
-            Controls.Add(btnRegresar);
             Controls.Add(cmbTrabajo);
             Controls.Add(label1);
             Controls.Add(txtNombre);
             Controls.Add(lblBuscarNombre);
             Controls.Add(gridEmpleados);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "frmEmpleados";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Colaboradores";
-            WindowState = FormWindowState.Maximized;
             Load += frmEmpleados_Load;
             ((System.ComponentModel.ISupportInitialize)gridEmpleados).EndInit();
             ResumeLayout(false);
@@ -162,7 +163,7 @@
         private TextBox txtNombre;
         private Label label1;
         private ComboBox cmbTrabajo;
-        private FontAwesome.Sharp.IconButton btnRegresar;
         private FontAwesome.Sharp.IconButton btnNuevo;
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }

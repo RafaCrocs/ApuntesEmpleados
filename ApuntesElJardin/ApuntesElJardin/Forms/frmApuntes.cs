@@ -15,6 +15,8 @@ namespace ApuntesElJardin.Forms
     {
         public frmApuntes()
         {
+            this.AutoScaleMode = AutoScaleMode.Dpi;
+            this.AutoScaleDimensions = new SizeF(96F, 96F);
             InitializeComponent();
         }
 
@@ -100,6 +102,11 @@ namespace ApuntesElJardin.Forms
         {
             frmHistorial historial = new frmHistorial();
             historial.Show();
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

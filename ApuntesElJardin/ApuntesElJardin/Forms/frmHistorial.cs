@@ -44,5 +44,10 @@ namespace ApuntesElJardin.Forms
                 gridHistorial.DataSource = listaHistorial;
             }
         }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

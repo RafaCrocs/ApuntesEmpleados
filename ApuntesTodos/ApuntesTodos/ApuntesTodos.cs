@@ -75,7 +75,7 @@ namespace ApuntesTodos
 
         private void gridApuntes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > 0)
+            if (e.RowIndex < 0)
             {
                 return;
             }
@@ -91,6 +91,14 @@ namespace ApuntesTodos
                 {
                     MessageBox.Show("Algo malio sal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+            else if(gridApuntes.Columns[e.ColumnIndex].Name == "Detalles")
+            {
+                int idSelecionado = Convert.ToInt32(gridApuntes.Rows[e.RowIndex].Cells["IdEmpleado"].Value);
+                string nombreEmpleado = gridApuntes.Rows[e.RowIndex].Cells["NombreCompleto"].Value.ToString();
+
+                frmDetalles detallesForm = new frmDetalles(idSelecionado, nombreEmpleado);
+                detallesForm.Show();
             }
 
         }

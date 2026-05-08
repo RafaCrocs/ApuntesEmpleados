@@ -7,6 +7,6 @@ namespace ApuntesTodos.DAL
     public class Conexion
     {
 
-        public static string Cadena = "server=localhost; database=ApuntesEmpleados; integrated security=true;";
+        public static string Cadena = "Server=tcp:apuntes-eljardinliberia.database.windows.net,1433;Initial Catalog=Apuntes_ElJardin;User ID=JoseCruz;Password=Supperhot123@;Encrypt=True;";
     }
 }

@@ -242,7 +242,6 @@ BEGIN
 	select
 		a.IdApunte,
 		e.NombreCompleto,
-		e.Trabajo,
 		a.Origen,
 		a.Monto,
 		a.Detalle,
@@ -258,4 +257,4 @@ select * from vw_ApuntesEmpleadosSouvenir;
 select * from vw_ApuntesEmpleadosRestaurante;
 select * from vw_ApuntesEmpleadosHeladeria;
 
-exec sp_ObtenerApuntesEmpleados;
+exec sp_DetalleApuntes @IdEmpleado = 1;

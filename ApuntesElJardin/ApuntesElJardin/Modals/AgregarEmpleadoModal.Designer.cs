@@ -104,6 +104,7 @@
             // AgregarEmpleadoModal
             // 
             ClientSize = new Size(403, 480);
+            ControlBox = false;
             Controls.Add(cmbTrabajo);
             Controls.Add(lblNombreCompleto);
             Controls.Add(txtNombreCompleto);
