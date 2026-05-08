@@ -116,5 +116,21 @@ namespace ApuntesElJardin.Forms
         {
             this.Close();
         }
+
+        private void gridEmpleados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+            {
+                return;
+            }
+            int idEmpleado = (int)gridEmpleados.Rows[e.RowIndex].Cells["IdEmpleado"].Value;
+            string nombreEmpleado = (string)gridEmpleados.Rows[e.RowIndex].Cells["NombreCompleto"].Value;
+            empleado = new Empleado()
+            {
+                IdEmpleado = idEmpleado,
+                NombreCompleto = nombreEmpleado
+            };
+            this.DialogResult = DialogResult.OK;
+        }
     }
 }
