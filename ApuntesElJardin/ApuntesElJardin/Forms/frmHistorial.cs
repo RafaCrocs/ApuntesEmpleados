@@ -49,5 +49,15 @@ namespace ApuntesElJardin.Forms
         {
             this.Close();
         }
+
+        private void gridHistorial_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (gridHistorial.Columns[e.ColumnIndex].Name == "Monto" && e.Value != null)
+            {
+                decimal monto = (decimal)e.Value;
+                e.Value = monto.ToString("C0", new System.Globalization.CultureInfo("es-CR"));
+                e.FormattingApplied = true;
+            }
+        }
     }
 }

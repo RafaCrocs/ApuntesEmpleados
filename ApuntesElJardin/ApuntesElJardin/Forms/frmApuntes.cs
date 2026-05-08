@@ -47,7 +47,7 @@ namespace ApuntesElJardin.Forms
             if (gridApuntes.Columns[e.ColumnIndex].Name == "Monto" && e.Value != null)
             {
                 decimal monto = (decimal)e.Value;
-                e.Value = monto.ToString("C2", new System.Globalization.CultureInfo("es-CR"));
+                e.Value = monto.ToString("C0", new System.Globalization.CultureInfo("es-CR"));
                 e.FormattingApplied = true;
             }
         }
@@ -70,7 +70,7 @@ namespace ApuntesElJardin.Forms
             if (e.RowIndex >= 0 && gridApuntes.Columns[e.ColumnIndex].Name == "Pagar")
             {
                 int idApunte = Convert.ToInt32(gridApuntes.Rows[e.RowIndex].Cells["IdApunte"].Value);
-                if (MessageBox.Show("¿Está seguro que desea pagar este apunte?\n" + gridApuntes.Rows[e.RowIndex].Cells["NombreCompleto"].Value.ToString() + "\nMonto: " + Convert.ToDecimal(gridApuntes.Rows[e.RowIndex].Cells["Monto"].Value).ToString("C2", new System.Globalization.CultureInfo("es-CR")), "Confirmar Pago", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("¿Está seguro que desea pagar este apunte?\n" + gridApuntes.Rows[e.RowIndex].Cells["NombreCompleto"].Value.ToString() + "\nMonto: " + Convert.ToDecimal(gridApuntes.Rows[e.RowIndex].Cells["Monto"].Value).ToString("C0", new System.Globalization.CultureInfo("es-CR")), "Confirmar Pago", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     if (apuntesBL.PagarApunte(idApunte))
                     {
