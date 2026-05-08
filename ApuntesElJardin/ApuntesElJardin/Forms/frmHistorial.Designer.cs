@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             txtNombre = new TextBox();
             lblBuscarNombre = new Label();
             gridHistorial = new DataGridView();
@@ -47,8 +47,9 @@
             // 
             // txtNombre
             // 
+            txtNombre.BorderStyle = BorderStyle.FixedSingle;
             txtNombre.Font = new Font("Segoe UI", 18F);
-            txtNombre.Location = new Point(318, 130);
+            txtNombre.Location = new Point(278, 130);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(234, 39);
             txtNombre.TabIndex = 20;
@@ -69,14 +70,14 @@
             gridHistorial.BackgroundColor = SystemColors.Control;
             gridHistorial.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gridHistorial.Columns.AddRange(new DataGridViewColumn[] { IdPago, NombreCompleto, Monto, Detalle, SePagoEn, Fecha });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 14F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            gridHistorial.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 14F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            gridHistorial.DefaultCellStyle = dataGridViewCellStyle2;
             gridHistorial.Location = new Point(45, 246);
             gridHistorial.Name = "gridHistorial";
             gridHistorial.RowHeadersWidth = 51;
@@ -143,7 +144,7 @@
             // 
             dateTimePicker1.Font = new Font("Segoe UI", 18F);
             dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(318, 175);
+            dateTimePicker1.Location = new Point(278, 175);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(184, 39);
             dateTimePicker1.TabIndex = 22;
