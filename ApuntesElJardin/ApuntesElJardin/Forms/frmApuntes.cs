@@ -25,7 +25,7 @@ namespace ApuntesElJardin.Forms
 
         public void CargarGrid()
         {
-            apuntesMiniMarket = apuntesBL.ApuntesMiniMarkets();
+            apuntesMiniMarket = apuntesBL.ApuntesHeladeria();
             gridApuntes.DataSource = apuntesMiniMarket;
         }
 
