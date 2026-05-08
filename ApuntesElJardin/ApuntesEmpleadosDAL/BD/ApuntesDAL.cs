@@ -94,6 +94,7 @@ namespace ApuntesEmpleados.DAL.BD
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@IdApunte", idApunte);
+                    cmd.Parameters.AddWithValue("@Origen", "MiniMarket");
                     cmd.Parameters.AddWithValue("@SePagoEn", "MiniMarket");
 
                     cmd.Parameters.Add("@Mensaje", SqlDbType.VarChar, 200).Direction = ParameterDirection.Output;

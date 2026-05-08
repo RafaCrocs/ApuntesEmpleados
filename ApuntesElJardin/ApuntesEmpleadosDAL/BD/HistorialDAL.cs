@@ -30,6 +30,7 @@ namespace ApuntesEmpleados.DAL.BD
                                 NombreCompleto = dr["NombreCompleto"].ToString(),
                                 Monto = Convert.ToDecimal(dr["Monto"]),
                                 Detalle = dr["Detalle"].ToString(),
+                                Origen = dr["Origen"].ToString(),
                                 SePagoEn = dr["SePagoEn"].ToString(),
                                 FechaPago = Convert.ToDateTime(dr["FechaPago"])
                             };

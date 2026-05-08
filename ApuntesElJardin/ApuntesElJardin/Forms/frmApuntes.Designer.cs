@@ -32,6 +32,12 @@
             txtNombre = new TextBox();
             lblBuscarNombre = new Label();
             gridApuntes = new DataGridView();
+            cmbTrabajo = new ComboBox();
+            label1 = new Label();
+            btnVerHistorial = new FontAwesome.Sharp.IconButton();
+            label2 = new Label();
+            label3 = new Label();
+            iconButton1 = new FontAwesome.Sharp.IconButton();
             Pagar = new DataGridViewButtonColumn();
             IdApunte = new DataGridViewTextBoxColumn();
             NombreCompleto = new DataGridViewTextBoxColumn();
@@ -40,12 +46,6 @@
             Origen = new DataGridViewTextBoxColumn();
             Detalle = new DataGridViewTextBoxColumn();
             FechaPago = new DataGridViewTextBoxColumn();
-            cmbTrabajo = new ComboBox();
-            label1 = new Label();
-            btnVerHistorial = new FontAwesome.Sharp.IconButton();
-            label2 = new Label();
-            label3 = new Label();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)gridApuntes).BeginInit();
             SuspendLayout();
             // 
@@ -89,73 +89,6 @@
             gridApuntes.TabIndex = 5;
             gridApuntes.CellContentClick += gridApuntes_CellContentClick;
             gridApuntes.CellFormatting += gridApuntes_CellFormatting;
-            // 
-            // Pagar
-            // 
-            Pagar.HeaderText = "";
-            Pagar.MinimumWidth = 6;
-            Pagar.Name = "Pagar";
-            Pagar.Resizable = DataGridViewTriState.True;
-            Pagar.SortMode = DataGridViewColumnSortMode.Automatic;
-            Pagar.Text = "Pagar";
-            Pagar.UseColumnTextForButtonValue = true;
-            Pagar.Width = 125;
-            // 
-            // IdApunte
-            // 
-            IdApunte.DataPropertyName = "IdApunte";
-            IdApunte.HeaderText = "IdApunte";
-            IdApunte.MinimumWidth = 6;
-            IdApunte.Name = "IdApunte";
-            IdApunte.Visible = false;
-            IdApunte.Width = 125;
-            // 
-            // NombreCompleto
-            // 
-            NombreCompleto.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            NombreCompleto.DataPropertyName = "NombreCompleto";
-            NombreCompleto.HeaderText = "NombreCompleto";
-            NombreCompleto.MinimumWidth = 6;
-            NombreCompleto.Name = "NombreCompleto";
-            // 
-            // Trabajo
-            // 
-            Trabajo.DataPropertyName = "Trabajo";
-            Trabajo.HeaderText = "Trabajo";
-            Trabajo.MinimumWidth = 6;
-            Trabajo.Name = "Trabajo";
-            Trabajo.Visible = false;
-            Trabajo.Width = 125;
-            // 
-            // Monto
-            // 
-            Monto.DataPropertyName = "Monto";
-            Monto.HeaderText = "Monto";
-            Monto.MinimumWidth = 6;
-            Monto.Name = "Monto";
-            // 
-            // Origen
-            // 
-            Origen.DataPropertyName = "Origen";
-            Origen.HeaderText = "Origen";
-            Origen.MinimumWidth = 6;
-            Origen.Name = "Origen";
-            Origen.Width = 125;
-            // 
-            // Detalle
-            // 
-            Detalle.DataPropertyName = "Detalle";
-            Detalle.HeaderText = "Detalle";
-            Detalle.MinimumWidth = 6;
-            Detalle.Name = "Detalle";
-            Detalle.Width = 200;
-            // 
-            // FechaPago
-            // 
-            FechaPago.DataPropertyName = "Fecha";
-            FechaPago.HeaderText = "Fecha";
-            FechaPago.MinimumWidth = 6;
-            FechaPago.Name = "FechaPago";
             // 
             // cmbTrabajo
             // 
@@ -233,6 +166,74 @@
             iconButton1.TextAlign = ContentAlignment.TopCenter;
             iconButton1.UseVisualStyleBackColor = false;
             iconButton1.Click += iconButton1_Click;
+            // 
+            // Pagar
+            // 
+            Pagar.HeaderText = "";
+            Pagar.MinimumWidth = 6;
+            Pagar.Name = "Pagar";
+            Pagar.Resizable = DataGridViewTriState.True;
+            Pagar.SortMode = DataGridViewColumnSortMode.Automatic;
+            Pagar.Text = "Pagar";
+            Pagar.UseColumnTextForButtonValue = true;
+            Pagar.Width = 125;
+            // 
+            // IdApunte
+            // 
+            IdApunte.DataPropertyName = "IdApunte";
+            IdApunte.HeaderText = "IdApunte";
+            IdApunte.MinimumWidth = 6;
+            IdApunte.Name = "IdApunte";
+            IdApunte.Visible = false;
+            IdApunte.Width = 125;
+            // 
+            // NombreCompleto
+            // 
+            NombreCompleto.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            NombreCompleto.DataPropertyName = "NombreCompleto";
+            NombreCompleto.HeaderText = "NombreCompleto";
+            NombreCompleto.MinimumWidth = 6;
+            NombreCompleto.Name = "NombreCompleto";
+            // 
+            // Trabajo
+            // 
+            Trabajo.DataPropertyName = "Trabajo";
+            Trabajo.HeaderText = "Trabajo";
+            Trabajo.MinimumWidth = 6;
+            Trabajo.Name = "Trabajo";
+            Trabajo.Visible = false;
+            Trabajo.Width = 125;
+            // 
+            // Monto
+            // 
+            Monto.DataPropertyName = "Monto";
+            Monto.HeaderText = "Monto";
+            Monto.MinimumWidth = 6;
+            Monto.Name = "Monto";
+            // 
+            // Origen
+            // 
+            Origen.DataPropertyName = "Origen";
+            Origen.HeaderText = "Origen";
+            Origen.MinimumWidth = 6;
+            Origen.Name = "Origen";
+            Origen.Visible = false;
+            Origen.Width = 125;
+            // 
+            // Detalle
+            // 
+            Detalle.DataPropertyName = "Detalle";
+            Detalle.HeaderText = "Detalle";
+            Detalle.MinimumWidth = 6;
+            Detalle.Name = "Detalle";
+            Detalle.Width = 200;
+            // 
+            // FechaPago
+            // 
+            FechaPago.DataPropertyName = "Fecha";
+            FechaPago.HeaderText = "Fecha";
+            FechaPago.MinimumWidth = 6;
+            FechaPago.Name = "FechaPago";
             // 
             // frmApuntes
             // 
