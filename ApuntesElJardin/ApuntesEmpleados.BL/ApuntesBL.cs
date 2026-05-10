@@ -12,7 +12,7 @@ namespace ApuntesEmpleados.BL
 
         private ApuntesDAL apuntesDAL = new ApuntesDAL();
 
-        public List<VerApuntesMiniMarket> ApuntesMiniMarkets()
+        public List<VerApuntesMiniMarket> ApuntesMiniMarket()
         {
             return apuntesDAL.Apuntes_ObtenerTodosMiniMarket();
         }
