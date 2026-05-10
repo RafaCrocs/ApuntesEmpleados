@@ -75,6 +75,11 @@ namespace ApuntesElJardin.Forms
                     if (apuntesBL.PagarApunte(idApunte))
                     {
                         CargarGrid();
+                        if(txtNombre.Text.Length >= 3)
+                        {
+                            var filtrados = apuntesMiniMarket.FindAll(a => a.NombreCompleto.IndexOf(txtNombre.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                            gridApuntes.DataSource = filtrados;
+                        }
                     }
                     else
                     {
@@ -93,8 +98,8 @@ namespace ApuntesElJardin.Forms
             }
             else
             {
-                var empleadosFiltro = apuntesMiniMarket.Where(x => x.Trabajo.ToLower().Contains(cmbTrabajo.Text.ToLower())).ToList();
-                gridApuntes.DataSource = empleadosFiltro;
+                var filtrados = apuntesMiniMarket.FindAll(a => a.Trabajo.IndexOf(cmbTrabajo.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                gridApuntes.DataSource = filtrados;
             }
         }
 
