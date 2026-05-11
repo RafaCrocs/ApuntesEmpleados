@@ -105,8 +105,16 @@ namespace ApuntesElJardin.Forms
 
         private void btnVerHistorial_Click(object sender, EventArgs e)
         {
-            frmHistorial historial = new frmHistorial();
-            historial.Show();
+            try
+            {
+                frmHistorial historial = new frmHistorial();
+                historial.Show();
+
+            }
+            catch
+            {
+                    MessageBox.Show("Error al abrir el historial");
+            }
         }
 
         private void iconButton1_Click(object sender, EventArgs e)

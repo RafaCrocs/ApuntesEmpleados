@@ -106,9 +106,17 @@ namespace ApuntesElJardin.Forms
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            AgregarEmpleadoModal modal = new AgregarEmpleadoModal();
-            modal.ShowDialog();
-            CargarGrid();
+            try
+            {
+                AgregarEmpleadoModal modal = new AgregarEmpleadoModal();
+                modal.ShowDialog();
+                CargarGrid();
+
+            }
+            catch
+            {
+                MessageBox.Show("Error al agregar el empleado");
+            }
 
         }
 
