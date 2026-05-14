@@ -53,6 +53,7 @@
             gridEmpleados.DefaultCellStyle = dataGridViewCellStyle1;
             gridEmpleados.Location = new Point(65, 196);
             gridEmpleados.Name = "gridEmpleados";
+            gridEmpleados.ReadOnly = true;
             gridEmpleados.RowHeadersWidth = 51;
             gridEmpleados.Size = new Size(827, 395);
             gridEmpleados.TabIndex = 0;

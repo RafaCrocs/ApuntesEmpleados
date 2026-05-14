@@ -1,0 +1,209 @@
+﻿namespace ApuntesElJardin.Forms
+{
+    partial class frmDetalles
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            gridDetalles = new DataGridView();
+            Pagar = new DataGridViewButtonColumn();
+            IdApunte = new DataGridViewTextBoxColumn();
+            NombreCompleto = new DataGridViewTextBoxColumn();
+            Trabajo = new DataGridViewTextBoxColumn();
+            Origen = new DataGridViewTextBoxColumn();
+            Detalle = new DataGridViewTextBoxColumn();
+            Monto = new DataGridViewTextBoxColumn();
+            Fecha = new DataGridViewTextBoxColumn();
+            lblDetallesDe = new Label();
+            lblNombre = new Label();
+            iconButton1 = new FontAwesome.Sharp.IconButton();
+            ((System.ComponentModel.ISupportInitialize)gridDetalles).BeginInit();
+            SuspendLayout();
+            // 
+            // gridDetalles
+            // 
+            gridDetalles.BackgroundColor = SystemColors.Control;
+            gridDetalles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gridDetalles.Columns.AddRange(new DataGridViewColumn[] { Pagar, IdApunte, NombreCompleto, Trabajo, Origen, Detalle, Monto, Fecha });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 14F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            gridDetalles.DefaultCellStyle = dataGridViewCellStyle2;
+            gridDetalles.Location = new Point(22, 176);
+            gridDetalles.Name = "gridDetalles";
+            gridDetalles.ReadOnly = true;
+            gridDetalles.RowHeadersWidth = 51;
+            gridDetalles.Size = new Size(950, 321);
+            gridDetalles.TabIndex = 6;
+            gridDetalles.CellContentClick += gridDetalles_CellContentClick;
+            gridDetalles.CellFormatting += gridDetalles_CellFormatting;
+            // 
+            // Pagar
+            // 
+            Pagar.HeaderText = "";
+            Pagar.MinimumWidth = 6;
+            Pagar.Name = "Pagar";
+            Pagar.ReadOnly = true;
+            Pagar.Resizable = DataGridViewTriState.True;
+            Pagar.SortMode = DataGridViewColumnSortMode.Automatic;
+            Pagar.Text = "Pagar";
+            Pagar.UseColumnTextForButtonValue = true;
+            Pagar.Width = 125;
+            // 
+            // IdApunte
+            // 
+            IdApunte.DataPropertyName = "IdApunte";
+            IdApunte.HeaderText = "IdApunte";
+            IdApunte.Name = "IdApunte";
+            IdApunte.ReadOnly = true;
+            IdApunte.Visible = false;
+            // 
+            // NombreCompleto
+            // 
+            NombreCompleto.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            NombreCompleto.DataPropertyName = "NombreCompleto";
+            NombreCompleto.HeaderText = "NombreCompleto";
+            NombreCompleto.MinimumWidth = 6;
+            NombreCompleto.Name = "NombreCompleto";
+            NombreCompleto.ReadOnly = true;
+            // 
+            // Trabajo
+            // 
+            Trabajo.DataPropertyName = "Trabajo";
+            Trabajo.HeaderText = "Trabajo";
+            Trabajo.MinimumWidth = 6;
+            Trabajo.Name = "Trabajo";
+            Trabajo.ReadOnly = true;
+            Trabajo.Visible = false;
+            Trabajo.Width = 125;
+            // 
+            // Origen
+            // 
+            Origen.DataPropertyName = "Origen";
+            Origen.HeaderText = "Origen";
+            Origen.Name = "Origen";
+            Origen.ReadOnly = true;
+            Origen.Visible = false;
+            // 
+            // Detalle
+            // 
+            Detalle.DataPropertyName = "Detalle";
+            Detalle.HeaderText = "Detalle";
+            Detalle.Name = "Detalle";
+            Detalle.ReadOnly = true;
+            Detalle.Width = 200;
+            // 
+            // Monto
+            // 
+            Monto.DataPropertyName = "Monto";
+            Monto.HeaderText = "Monto";
+            Monto.MinimumWidth = 6;
+            Monto.Name = "Monto";
+            Monto.ReadOnly = true;
+            Monto.Width = 150;
+            // 
+            // Fecha
+            // 
+            Fecha.DataPropertyName = "Fecha";
+            Fecha.HeaderText = "Fecha";
+            Fecha.Name = "Fecha";
+            Fecha.ReadOnly = true;
+            // 
+            // lblDetallesDe
+            // 
+            lblDetallesDe.AutoSize = true;
+            lblDetallesDe.Font = new Font("Segoe UI", 20F);
+            lblDetallesDe.Location = new Point(22, 78);
+            lblDetallesDe.Name = "lblDetallesDe";
+            lblDetallesDe.Size = new Size(162, 37);
+            lblDetallesDe.TabIndex = 7;
+            lblDetallesDe.Text = "Detalles de: ";
+            // 
+            // lblNombre
+            // 
+            lblNombre.AutoSize = true;
+            lblNombre.Font = new Font("Segoe UI", 25F);
+            lblNombre.ForeColor = Color.FromArgb(128, 128, 255);
+            lblNombre.Location = new Point(199, 72);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(0, 46);
+            lblNombre.TabIndex = 8;
+            // 
+            // iconButton1
+            // 
+            iconButton1.BackColor = Color.FromArgb(255, 192, 192);
+            iconButton1.Font = new Font("Segoe UI", 25F);
+            iconButton1.IconChar = FontAwesome.Sharp.IconChar.X;
+            iconButton1.IconColor = Color.Black;
+            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton1.ImageAlign = ContentAlignment.BottomCenter;
+            iconButton1.Location = new Point(904, 25);
+            iconButton1.Name = "iconButton1";
+            iconButton1.Size = new Size(68, 62);
+            iconButton1.TabIndex = 26;
+            iconButton1.TextAlign = ContentAlignment.TopCenter;
+            iconButton1.UseVisualStyleBackColor = false;
+            iconButton1.Click += iconButton1_Click;
+            // 
+            // frmDetalles
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1006, 572);
+            ControlBox = false;
+            Controls.Add(iconButton1);
+            Controls.Add(lblNombre);
+            Controls.Add(lblDetallesDe);
+            Controls.Add(gridDetalles);
+            Name = "frmDetalles";
+            Text = "frmDetalles";
+            Load += frmDetalles_Load;
+            ((System.ComponentModel.ISupportInitialize)gridDetalles).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private DataGridView gridDetalles;
+        private DataGridViewButtonColumn Pagar;
+        private DataGridViewTextBoxColumn IdApunte;
+        private DataGridViewTextBoxColumn NombreCompleto;
+        private DataGridViewTextBoxColumn Trabajo;
+        private DataGridViewTextBoxColumn Origen;
+        private DataGridViewTextBoxColumn Detalle;
+        private DataGridViewTextBoxColumn Monto;
+        private DataGridViewTextBoxColumn Fecha;
+        private Label lblDetallesDe;
+        private Label lblNombre;
+        private FontAwesome.Sharp.IconButton iconButton1;
+    }
+}

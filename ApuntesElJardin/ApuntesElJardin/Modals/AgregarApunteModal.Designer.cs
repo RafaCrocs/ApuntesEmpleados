@@ -202,7 +202,7 @@
             Controls.Add(txtNombre);
             Name = "AgregarApunteModal";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Apuntes Heladeria  v1.0.1";
+            Text = "Apuntes Restaurante  v1.1.0";
             ResumeLayout(false);
             PerformLayout();
         }

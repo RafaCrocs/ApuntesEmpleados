@@ -11,32 +11,30 @@ namespace ApuntesEmpleados.DAL.BD
     public class ApuntesDAL
     {
 
-        public List<VerApuntesMiniMarket> Apuntes_ObtenerTodosHeladeria()
+        public List<VerApuntesRestaurante> Apuntes_ObtenerTodosRestaurante()
         {
-            string query = "select * from vw_ApuntesEmpleadosHeladeria";
-            List<VerApuntesMiniMarket> apuntesMiniMarkets = new List<VerApuntesMiniMarket>();
+            List<VerApuntesRestaurante> apuntesRestaurante = new List<VerApuntesRestaurante>();
             using (SqlConnection conn = new SqlConnection(Conexion.Cadena))
             {
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlCommand cmd = new SqlCommand("sp_ObtenerApuntesPorOrigen", conn))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
                     try
                     {
                         conn.Open();
+                        cmd.Parameters.AddWithValue("@Origen", "Restaurante");
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                VerApuntesMiniMarket apunte = new VerApuntesMiniMarket
+                                VerApuntesRestaurante apunte = new VerApuntesRestaurante
                                 {
-                                    IdApunte = Convert.ToInt32(reader["IdApunte"]),
+                                    IdEmpleado = Convert.ToInt32(reader["IdEmpleado"]),
                                     NombreCompleto = reader["NombreCompleto"].ToString(),
                                     Trabajo = reader["Trabajo"].ToString(),
-                                    Origen = reader["Origen"].ToString(),
-                                    Monto = Convert.ToDecimal(reader["Monto"]),
-                                    Detalle = reader["Detalle"].ToString(),
-                                    Fecha = Convert.ToDateTime(reader["Fecha"])
+                                    Monto = Convert.ToDecimal(reader["Monto"])
                                 };
-                                apuntesMiniMarkets.Add(apunte);
+                                apuntesRestaurante.Add(apunte);
                             }
                         }
                     }
@@ -46,7 +44,7 @@ namespace ApuntesEmpleados.DAL.BD
                     }
                 }
             }
-            return apuntesMiniMarkets;
+            return apuntesRestaurante;
         }
 
         public bool AgregarApunte(Apunte apunte, out string mensaje)
@@ -54,9 +52,9 @@ namespace ApuntesEmpleados.DAL.BD
             bool resultado = false;
             mensaje = string.Empty;
 
-            using(SqlConnection conn = new SqlConnection(Conexion.Cadena))
+            using (SqlConnection conn = new SqlConnection(Conexion.Cadena))
             {
-                using(SqlCommand cmd = new SqlCommand("sp_InsertarApunte", conn))
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarApunte", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -94,8 +92,8 @@ namespace ApuntesEmpleados.DAL.BD
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@IdApunte", idApunte);
-                    cmd.Parameters.AddWithValue("@Origen", "Heladeria");
-                    cmd.Parameters.AddWithValue("@SePagoEn", "Heladeria");
+                    cmd.Parameters.AddWithValue("@Origen", "Restaurante");
+                    cmd.Parameters.AddWithValue("@SePagoEn", "Restaurante");
 
                     cmd.Parameters.Add("@Mensaje", SqlDbType.VarChar, 200).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("@Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
@@ -112,6 +110,32 @@ namespace ApuntesEmpleados.DAL.BD
                 }
                 return resultado;
             }
+        }
+
+        public bool PagarTodo(int idEmpleado)
+        {
+            bool resultado = false;
+            using (SqlConnection conn = new SqlConnection(Conexion.Cadena))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_PagarTodo", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdEmpleado", idEmpleado);
+                    cmd.Parameters.AddWithValue("@SePagoEn", "Restaurante");
+                    cmd.Parameters.Add("@Mensaje", SqlDbType.VarChar, 200).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
+                    try
+                    {
+                        conn.Open();
+                        resultado = cmd.ExecuteNonQuery() > 0;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error al pagar todos los apuntes: {ex.Message}");
+                    }
+                }
+            }
+            return resultado;
         }
     }
 }

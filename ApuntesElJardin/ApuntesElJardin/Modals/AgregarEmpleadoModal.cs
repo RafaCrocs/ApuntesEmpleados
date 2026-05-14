@@ -21,28 +21,36 @@ namespace ApuntesElJardin.Modals
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNombreCompleto.Text) ||
-                string.IsNullOrWhiteSpace(cmbTrabajo.Text))
+            try
             {
-                MessageBox.Show("Por favor complete todos los campos.");
-                return;
-            }
+                if (string.IsNullOrWhiteSpace(txtNombreCompleto.Text) ||
+                    string.IsNullOrWhiteSpace(cmbTrabajo.Text))
+                {
+                    MessageBox.Show("Por favor complete todos los campos.");
+                    return;
+                }
 
-            Empleado empleado = new Empleado
-            {
-                NombreCompleto = txtNombreCompleto.Text.Trim(),
-                Trabajo = cmbTrabajo.Text.Trim()
-            };
+                Empleado empleado = new Empleado
+                {
+                    NombreCompleto = txtNombreCompleto.Text.Trim(),
+                    Trabajo = cmbTrabajo.Text.Trim()
+                };
 
-            if (empleadosBL.Empleado_Insertar(empleado, out string mensaje))
-            {
-                MessageBox.Show(mensaje);
-                DialogResult = DialogResult.OK;
-                this.Close();
+                if (empleadosBL.Empleado_Insertar(empleado, out string mensaje))
+                {
+                    MessageBox.Show(mensaje);
+                    DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show(mensaje);
+                }
+
             }
-            else
+            catch
             {
-                MessageBox.Show(mensaje);
+                MessageBox.Show("Ocurrió un error al guardar el empleado. Por favor intente nuevamente.");
             }
         }
 

@@ -37,48 +37,56 @@ namespace ApuntesElJardin.Modals
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (txtDetalle.Text == string.Empty)
+            try
             {
-                MessageBox.Show("Agregue un detalle", "Detalle", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                if (txtDetalle.Text == string.Empty)
+                {
+                    MessageBox.Show("Agregue un detalle", "Detalle", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-            for (int i = 0; i < codigos.Count; i++)
+                for (int i = 0; i < codigos.Count; i++)
+                {
+                    if (cantidad == 1)
+                    {
+                        nuevoApunte = new Apunte()
+                        {
+                            Origen = "Restaurante",
+                            IdEmpleado = codigos[i],
+                            Monto = decimal.TryParse(txtMonto.Text, NumberStyles.Currency, new CultureInfo("es-CR"), out decimal monto) ? monto : 0,
+                            Detalle = txtDetalle.Text,
+                        };
+
+                    }
+                    else
+                    {
+                        nuevoApunte = new Apunte()
+                        {
+                            Origen = "Restaurante",
+                            IdEmpleado = codigos[i],
+                            Monto = decimal.TryParse(lblCadaUno.Text.Replace("C/U: ", ""), NumberStyles.Currency, new CultureInfo("es-CR"), out decimal monto) ? monto : 0,
+                            Detalle = txtDetalle.Text,
+                        };
+
+                    }
+
+                    if (apuntesBL.AgregarApunte(nuevoApunte, out string mensaje))
+                    {
+                        MessageBox.Show("Apunte agregado correctamente");
+                    }
+                    else
+                    {
+                        MessageBox.Show(mensaje);
+                    }
+                }
+                BorrarCampos();
+                codigos.Clear();
+
+            }
+            catch
             {
-                if (cantidad == 1)
-                {
-                    nuevoApunte = new Apunte()
-                    {
-                        Origen = "Heladeria",
-                        IdEmpleado = codigos[i],
-                        Monto = decimal.TryParse(txtMonto.Text, NumberStyles.Currency, new CultureInfo("es-CR"), out decimal monto) ? monto : 0,
-                        Detalle = txtDetalle.Text,
-                    };
-
-                }
-                else
-                {
-                    nuevoApunte = new Apunte()
-                    {
-                        Origen = "Heladeria",
-                        IdEmpleado = codigos[i],
-                        Monto = decimal.TryParse(lblCadaUno.Text.Replace("C/U: ", ""), NumberStyles.Currency, new CultureInfo("es-CR"), out decimal monto) ? monto : 0,
-                        Detalle = txtDetalle.Text,
-                    };
-
-                }
-
-                if (apuntesBL.AgregarApunte(nuevoApunte, out string mensaje))
-                {
-                    MessageBox.Show("Apunte agregado correctamente");
-                }
-                else
-                {
-                    MessageBox.Show("Error al agregar el apunte: " + mensaje);
-                }
+                MessageBox.Show("Error al agregar el apunte");
             }
-            BorrarCampos();
-            codigos.Clear();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -95,43 +103,57 @@ namespace ApuntesElJardin.Modals
 
         private void btnbuscar_Click(object sender, EventArgs e)
         {
-
-            frmEmpleados modal = new frmEmpleados();
-            modal.ShowDialog();
-            if (modal.DialogResult == DialogResult.OK)
+            try
             {
-                if (txtNombre.Text.Contains(modal.empleado.NombreCompleto.ToString()))
+                frmEmpleados modal = new frmEmpleados();
+                modal.ShowDialog();
+                if (modal.DialogResult == DialogResult.OK)
                 {
-                    MessageBox.Show("Esa persona ya esta agregada", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                if (modal.empleado != null)
-                {
-                    if (txtNombre.Text != "")
+                    if (txtNombre.Text.Contains(modal.empleado.NombreCompleto.ToString()))
                     {
-                        txtNombre.Text += ", ";
+                        MessageBox.Show("Esa persona ya esta agregada", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
                     }
-                    codigos.Add(modal.empleado.IdEmpleado);
-                    cantidad++;
-                    txtNombre.Text += modal.empleado.NombreCompleto;
-                    lblCantidad.Text = "Cantidad: ";
-                    lblCantidad.Text += cantidad;
-                }
-                if (cantidad > 1 && txtMonto.Text != string.Empty)
-                {
-                    lblCadaUno.Text = "C/U: ";
-                    decimal.TryParse(txtMonto.Text, NumberStyles.Currency, new CultureInfo("es-CR"), out decimal monto2);
-                    decimal CU = monto2 / cantidad;
-                    lblCadaUno.Text += CU.ToString("C0", new CultureInfo("es-CR"));
-                }
+                    if (modal.empleado != null)
+                    {
+                        if (txtNombre.Text != "")
+                        {
+                            txtNombre.Text += ", ";
+                        }
+                        codigos.Add(modal.empleado.IdEmpleado);
+                        cantidad++;
+                        txtNombre.Text += modal.empleado.NombreCompleto;
+                        lblCantidad.Text = "Cantidad: ";
+                        lblCantidad.Text += cantidad;
+                    }
+                    if (cantidad > 1 && txtMonto.Text != string.Empty)
+                    {
+                        lblCadaUno.Text = "C/U: ";
+                        decimal.TryParse(txtMonto.Text, NumberStyles.Currency, new CultureInfo("es-CR"), out decimal monto2);
+                        decimal CU = monto2 / cantidad;
+                        lblCadaUno.Text += CU.ToString("C0", new CultureInfo("es-CR"));
+                    }
 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al seleccionar el empleado: " + ex.Message);
             }
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            frmApuntes frmApuntes = new frmApuntes();
-            frmApuntes.Show();
+            try
+            {
+
+                frmApuntes frmApuntes = new frmApuntes();
+                frmApuntes.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Error al mostrar los apuntes");
+            }
         }
 
         private void txtMonto_TextChanged(object sender, EventArgs e)

@@ -50,7 +50,7 @@
             // 
             txtNombre.BorderStyle = BorderStyle.FixedSingle;
             txtNombre.Font = new Font("Segoe UI", 18F);
-            txtNombre.Location = new Point(278, 130);
+            txtNombre.Location = new Point(303, 130);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(234, 39);
             txtNombre.TabIndex = 20;
@@ -161,7 +161,7 @@
             // 
             dateTimePicker1.Font = new Font("Segoe UI", 18F);
             dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(278, 175);
+            dateTimePicker1.Location = new Point(303, 175);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(184, 39);
             dateTimePicker1.TabIndex = 22;
