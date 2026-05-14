@@ -28,7 +28,6 @@ namespace ApuntesElJardin.Forms
         private void CagarGrid()
         {
             listaHistorial = historialBL.Historial_ObtenerTodos();
-            gridHistorial.DataSource = null;
             gridHistorial.DataSource = listaHistorial;
         }
 
@@ -48,6 +47,16 @@ namespace ApuntesElJardin.Forms
         private void iconButton1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void gridHistorial_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (gridHistorial.Columns[e.ColumnIndex].Name == "Monto" && e.Value != null)
+            {
+                decimal monto = (decimal)e.Value;
+                e.Value = monto.ToString("C0", new System.Globalization.CultureInfo("es-CR"));
+                e.FormattingApplied = true;
+            }
         }
     }
 }

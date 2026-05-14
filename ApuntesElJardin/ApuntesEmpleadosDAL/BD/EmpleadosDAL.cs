@@ -13,7 +13,7 @@ namespace ApuntesEmpleados.DAL.BD
         {
             List<Empleado> empleados = new List<Empleado>();
 
-            string query = "Select * from Empleados";
+            string query = "Select * from Empleados order by NombreCompleto";
 
             using (SqlConnection conn = new SqlConnection(Conexion.Cadena))
             {

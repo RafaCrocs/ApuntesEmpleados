@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ApuntesTodos.Entities
+namespace ApuntesEmpleados.Entities
 {
-    public class Detalles
+    public class DetallesRestaurante
     {
         public int IdApunte { get; set; }
         public string NombreCompleto { get; set; }
+        public string Trabajo { get; set; }
         public string Origen { get; set; }
         public decimal Monto { get; set; }
         public string Detalle { get; set; }

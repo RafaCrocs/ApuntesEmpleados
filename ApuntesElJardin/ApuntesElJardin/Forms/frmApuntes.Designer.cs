@@ -38,14 +38,12 @@
             label2 = new Label();
             label3 = new Label();
             iconButton1 = new FontAwesome.Sharp.IconButton();
-            Pagar = new DataGridViewButtonColumn();
-            IdApunte = new DataGridViewTextBoxColumn();
+            PagarTodo = new DataGridViewButtonColumn();
+            Detalles = new DataGridViewButtonColumn();
+            IdEmpleado = new DataGridViewTextBoxColumn();
             NombreCompleto = new DataGridViewTextBoxColumn();
             Trabajo = new DataGridViewTextBoxColumn();
             Monto = new DataGridViewTextBoxColumn();
-            Origen = new DataGridViewTextBoxColumn();
-            Detalle = new DataGridViewTextBoxColumn();
-            FechaPago = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)gridApuntes).BeginInit();
             SuspendLayout();
             // 
@@ -73,7 +71,7 @@
             // 
             gridApuntes.BackgroundColor = SystemColors.Control;
             gridApuntes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gridApuntes.Columns.AddRange(new DataGridViewColumn[] { Pagar, IdApunte, NombreCompleto, Trabajo, Monto, Origen, Detalle, FechaPago });
+            gridApuntes.Columns.AddRange(new DataGridViewColumn[] { PagarTodo, Detalles, IdEmpleado, NombreCompleto, Trabajo, Monto });
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Window;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 14F);
@@ -84,11 +82,30 @@
             gridApuntes.DefaultCellStyle = dataGridViewCellStyle1;
             gridApuntes.Location = new Point(71, 272);
             gridApuntes.Name = "gridApuntes";
+            gridApuntes.ReadOnly = true;
             gridApuntes.RowHeadersWidth = 51;
             gridApuntes.Size = new Size(943, 327);
             gridApuntes.TabIndex = 5;
             gridApuntes.CellContentClick += gridApuntes_CellContentClick;
             gridApuntes.CellFormatting += gridApuntes_CellFormatting;
+            // 
+            // Trabajo
+            // 
+            Trabajo.DataPropertyName = "Trabajo";
+            Trabajo.HeaderText = "Trabajo";
+            Trabajo.MinimumWidth = 6;
+            Trabajo.Name = "Trabajo";
+            Trabajo.ReadOnly = true;
+            Trabajo.Visible = false;
+            Trabajo.Width = 125;
+            // 
+            // Monto
+            // 
+            Monto.DataPropertyName = "Monto";
+            Monto.HeaderText = "Monto";
+            Monto.MinimumWidth = 6;
+            Monto.Name = "Monto";
+            Monto.ReadOnly = true;
             // 
             // cmbTrabajo
             // 
@@ -167,25 +184,34 @@
             iconButton1.UseVisualStyleBackColor = false;
             iconButton1.Click += iconButton1_Click;
             // 
-            // Pagar
+            // PagarTodo
             // 
-            Pagar.HeaderText = "";
-            Pagar.MinimumWidth = 6;
-            Pagar.Name = "Pagar";
-            Pagar.Resizable = DataGridViewTriState.True;
-            Pagar.SortMode = DataGridViewColumnSortMode.Automatic;
-            Pagar.Text = "Pagar";
-            Pagar.UseColumnTextForButtonValue = true;
-            Pagar.Width = 125;
+            PagarTodo.HeaderText = "";
+            PagarTodo.MinimumWidth = 6;
+            PagarTodo.Name = "PagarTodo";
+            PagarTodo.ReadOnly = true;
+            PagarTodo.Resizable = DataGridViewTriState.True;
+            PagarTodo.SortMode = DataGridViewColumnSortMode.Automatic;
+            PagarTodo.Text = "PagarTodo";
+            PagarTodo.UseColumnTextForButtonValue = true;
+            PagarTodo.Width = 125;
             // 
-            // IdApunte
+            // Detalles
             // 
-            IdApunte.DataPropertyName = "IdApunte";
-            IdApunte.HeaderText = "IdApunte";
-            IdApunte.MinimumWidth = 6;
-            IdApunte.Name = "IdApunte";
-            IdApunte.Visible = false;
-            IdApunte.Width = 125;
+            Detalles.HeaderText = "";
+            Detalles.Name = "Detalles";
+            Detalles.ReadOnly = true;
+            Detalles.Text = "Detalles";
+            Detalles.UseColumnTextForButtonValue = true;
+            Detalles.Width = 125;
+            // 
+            // IdEmpleado
+            // 
+            IdEmpleado.DataPropertyName = "IdEmpleado";
+            IdEmpleado.HeaderText = "IdEmpleado";
+            IdEmpleado.Name = "IdEmpleado";
+            IdEmpleado.ReadOnly = true;
+            IdEmpleado.Visible = false;
             // 
             // NombreCompleto
             // 
@@ -194,6 +220,7 @@
             NombreCompleto.HeaderText = "NombreCompleto";
             NombreCompleto.MinimumWidth = 6;
             NombreCompleto.Name = "NombreCompleto";
+            NombreCompleto.ReadOnly = true;
             // 
             // Trabajo
             // 
@@ -201,6 +228,7 @@
             Trabajo.HeaderText = "Trabajo";
             Trabajo.MinimumWidth = 6;
             Trabajo.Name = "Trabajo";
+            Trabajo.ReadOnly = true;
             Trabajo.Visible = false;
             Trabajo.Width = 125;
             // 
@@ -210,31 +238,9 @@
             Monto.HeaderText = "Monto";
             Monto.MinimumWidth = 6;
             Monto.Name = "Monto";
-            // 
-            // Origen
-            // 
-            Origen.DataPropertyName = "Origen";
-            Origen.HeaderText = "Origen";
-            Origen.MinimumWidth = 6;
-            Origen.Name = "Origen";
-            Origen.Visible = false;
-            Origen.Width = 125;
-            // 
-            // Detalle
-            // 
-            Detalle.DataPropertyName = "Detalle";
-            Detalle.HeaderText = "Detalle";
-            Detalle.MinimumWidth = 6;
-            Detalle.Name = "Detalle";
-            Detalle.Width = 200;
-            // 
-            // FechaPago
-            // 
-            FechaPago.DataPropertyName = "Fecha";
-            FechaPago.HeaderText = "Fecha";
-            FechaPago.MinimumWidth = 6;
-            FechaPago.Name = "FechaPago";
-            // 
+            Monto.ReadOnly = true;
+            Monto.Width = 200;
+            //
             // frmApuntes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -271,13 +277,11 @@
         private Label label2;
         private Label label3;
         private FontAwesome.Sharp.IconButton iconButton1;
-        private DataGridViewButtonColumn Pagar;
-        private DataGridViewTextBoxColumn IdApunte;
+        private DataGridViewButtonColumn PagarTodo;
+        private DataGridViewButtonColumn Detalles;
+        private DataGridViewTextBoxColumn IdEmpleado;
         private DataGridViewTextBoxColumn NombreCompleto;
         private DataGridViewTextBoxColumn Trabajo;
         private DataGridViewTextBoxColumn Monto;
-        private DataGridViewTextBoxColumn Origen;
-        private DataGridViewTextBoxColumn Detalle;
-        private DataGridViewTextBoxColumn FechaPago;
     }
 }

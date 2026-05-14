@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             gridEmpleados = new DataGridView();
             lblBuscarNombre = new Label();
             txtNombre = new TextBox();
@@ -43,20 +43,22 @@
             // 
             gridEmpleados.BackgroundColor = SystemColors.Control;
             gridEmpleados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 14F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            gridEmpleados.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 14F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            gridEmpleados.DefaultCellStyle = dataGridViewCellStyle1;
             gridEmpleados.Location = new Point(65, 196);
             gridEmpleados.Name = "gridEmpleados";
+            gridEmpleados.ReadOnly = true;
             gridEmpleados.RowHeadersWidth = 51;
             gridEmpleados.Size = new Size(827, 395);
             gridEmpleados.TabIndex = 0;
             gridEmpleados.CellContentDoubleClick += gridEmpleados_CellContentDoubleClick;
+            gridEmpleados.CellDoubleClick += gridEmpleados_CellDoubleClick;
             // 
             // lblBuscarNombre
             // 

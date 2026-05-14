@@ -141,7 +141,7 @@
             lblCadaUno.AutoSize = true;
             lblCadaUno.Enabled = false;
             lblCadaUno.Font = new Font("Segoe UI", 15F);
-            lblCadaUno.Location = new Point(276, 207);
+            lblCadaUno.Location = new Point(276, 194);
             lblCadaUno.Name = "lblCadaUno";
             lblCadaUno.Size = new Size(0, 28);
             lblCadaUno.TabIndex = 12;
@@ -202,7 +202,7 @@
             Controls.Add(txtNombre);
             Name = "AgregarApunteModal";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Apuntes Minimarket  v1.0.0";
+            Text = "Apuntes Restaurante  v1.1.0";
             ResumeLayout(false);
             PerformLayout();
         }
