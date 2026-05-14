@@ -30,7 +30,7 @@ namespace ApuntesElJardin.Forms
 
             gridEmpleados.Columns.Add(new DataGridViewTextBoxColumn { Name = "IdEmpleado", DataPropertyName = "IdEmpleado", HeaderText = "IdEmpleado", Visible = false });
             gridEmpleados.Columns.Add(new DataGridViewTextBoxColumn { Name = "NombreCompleto", DataPropertyName = "NombreCompleto", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
-            gridEmpleados.Columns.Add(new DataGridViewTextBoxColumn { Name = "Tranajo", DataPropertyName = "Trabajo", HeaderText = "De: " });
+            gridEmpleados.Columns.Add(new DataGridViewTextBoxColumn { Name = "Trabajo", DataPropertyName = "Trabajo", HeaderText = "De: " });
 
         }
 
@@ -45,7 +45,7 @@ namespace ApuntesElJardin.Forms
 
         private void CargarCombo()
         {
-            cmbTrabajo.DataSource = new List<String> { "", "Souvenir", "Minimarket", "Restaurante" };
+            cmbTrabajo.DataSource = new List<String> { "", "Souvenir", "Minimarket", "Restaurante" , "Heladeria"};
         }
         private void frmEmpleados_Load(object sender, EventArgs e)
         {

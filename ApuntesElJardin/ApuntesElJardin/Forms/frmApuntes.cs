@@ -21,17 +21,17 @@ namespace ApuntesElJardin.Forms
         }
 
         private ApuntesBL apuntesBL = new ApuntesBL();
-        private List<VerApuntesMiniMarket> apuntesMiniMarket;
+        private List<VerApuntesRestaurante> apuntesRestaurante;
 
         public void CargarGrid()
         {
-            apuntesMiniMarket = apuntesBL.ApuntesRestaurante();
-            gridApuntes.DataSource = apuntesMiniMarket;
+            apuntesRestaurante = apuntesBL.ApuntesRestaurante();
+            gridApuntes.DataSource = apuntesRestaurante;
         }
 
         private void CargarCombos()
         {
-            cmbTrabajo.DataSource = new List<String> { "", "Souvenir", "Minimarket", "Restaurante" };
+            cmbTrabajo.DataSource = new List<String> { "", "Souvenir", "Minimarket", "Restaurante", "Heladería" };
         }
         private void frmApuntes_Load(object sender, EventArgs e)
         {
@@ -56,36 +56,42 @@ namespace ApuntesElJardin.Forms
         {
             if (txtNombre.Text.Length >= 3)
             {
-                var filtrados = apuntesMiniMarket.FindAll(a => a.NombreCompleto.IndexOf(txtNombre.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                var filtrados = apuntesRestaurante.FindAll(a => a.NombreCompleto.IndexOf(txtNombre.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                 gridApuntes.DataSource = filtrados;
             }
             else
             {
-                gridApuntes.DataSource = apuntesMiniMarket;
+                gridApuntes.DataSource = apuntesRestaurante;
             }
         }
 
         private void gridApuntes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && gridApuntes.Columns[e.ColumnIndex].Name == "Pagar")
+            if(e.RowIndex < 0) return;
+            if (gridApuntes.Columns[e.ColumnIndex].Name == "PagarTodo")
             {
-                int idApunte = Convert.ToInt32(gridApuntes.Rows[e.RowIndex].Cells["IdApunte"].Value);
-                if (MessageBox.Show("¿Está seguro que desea pagar este apunte?\n" + gridApuntes.Rows[e.RowIndex].Cells["NombreCompleto"].Value.ToString() + "\nMonto: " + Convert.ToDecimal(gridApuntes.Rows[e.RowIndex].Cells["Monto"].Value).ToString("C0", new System.Globalization.CultureInfo("es-CR")), "Confirmar Pago", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                int idApunte = Convert.ToInt32(gridApuntes.Rows[e.RowIndex].Cells["IdEmpleado"].Value);
+                if (MessageBox.Show("¿Está seguro que desea pagar este apunte?\n" + gridApuntes.Rows[e.RowIndex].Cells["NombreCompleto"].Value.ToString() + "\nMonto: " + Convert.ToDecimal(gridApuntes.Rows[e.RowIndex].Cells["Monto"].Value).ToString("C2", new System.Globalization.CultureInfo("es-CR")), "Confirmar Pago", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    if (apuntesBL.PagarApunte(idApunte))
+                    int idEmpleado = Convert.ToInt32(gridApuntes.Rows[e.RowIndex].Cells["IdEmpleado"].Value);
+                    if(apuntesBL.PagarTodo(idEmpleado))
                     {
                         CargarGrid();
-                        if(txtNombre.Text.Length >= 3)
-                        {
-                            var filtrados = apuntesMiniMarket.FindAll(a => a.NombreCompleto.IndexOf(txtNombre.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-                            gridApuntes.DataSource = filtrados;
-                        }
                     }
                     else
                     {
-                        MessageBox.Show("Error al pagar el apunte");
+                        MessageBox.Show("Ocurrió un error al procesar el pago. Por favor, inténtelo de nuevo o contacte al patron.", "Error de pago", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    CargarGrid();
                 }
+            }
+            else if(gridApuntes.Columns[e.ColumnIndex].Name == "Detalles")
+            {
+                int idEmpleado = Convert.ToInt32(gridApuntes.Rows[e.RowIndex].Cells["IdEmpleado"].Value);
+                string nombreCompleto = gridApuntes.Rows[e.RowIndex].Cells["NombreCompleto"].Value.ToString();
+                frmDetalles detalles = new frmDetalles(idEmpleado, nombreCompleto);
+                detalles.ShowDialog();
+                CargarGrid();
             }
         }
 
@@ -93,13 +99,13 @@ namespace ApuntesElJardin.Forms
         {
             if (cmbTrabajo.Text == "")
             {
-                gridApuntes.DataSource = apuntesMiniMarket;
+                gridApuntes.DataSource = apuntesRestaurante;
                 return;
             }
             else
             {
-                var filtrados = apuntesMiniMarket.FindAll(a => a.Trabajo.IndexOf(cmbTrabajo.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-                gridApuntes.DataSource = filtrados;
+                var empleadosFiltro = apuntesRestaurante.Where(x => x.Trabajo.ToLower().Contains(cmbTrabajo.Text.ToLower())).ToList();
+                gridApuntes.DataSource = empleadosFiltro;
             }
         }
 

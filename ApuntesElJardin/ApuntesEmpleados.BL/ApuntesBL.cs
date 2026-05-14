@@ -12,7 +12,7 @@ namespace ApuntesEmpleados.BL
 
         private ApuntesDAL apuntesDAL = new ApuntesDAL();
 
-        public List<VerApuntesMiniMarket> ApuntesRestaurante()
+        public List<VerApuntesRestaurante> ApuntesRestaurante()
         {
             return apuntesDAL.Apuntes_ObtenerTodosRestaurante();
         }
@@ -27,5 +27,9 @@ namespace ApuntesEmpleados.BL
             return apuntesDAL.PagarApunte(idApunte);
         }
 
+        public bool PagarTodo(int IdEmpleado)
+        {
+            return apuntesDAL.PagarTodo(IdEmpleado);
+        }
     }
 }
