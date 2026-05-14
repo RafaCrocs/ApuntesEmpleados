@@ -202,7 +202,7 @@
             Controls.Add(txtNombre);
             Name = "AgregarApunteModal";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Apuntes Minimarket  v1.0.1";
+            Text = "Apuntes Minimarket  v1.1.0";
             ResumeLayout(false);
             PerformLayout();
         }

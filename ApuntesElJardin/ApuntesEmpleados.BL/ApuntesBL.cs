@@ -27,5 +27,9 @@ namespace ApuntesEmpleados.BL
             return apuntesDAL.PagarApunte(idApunte);
         }
 
+        public bool PagarTodo(int IdEmpleado)
+        {
+            return apuntesDAL.PagarTodo(IdEmpleado);
+        }
     }
 }
