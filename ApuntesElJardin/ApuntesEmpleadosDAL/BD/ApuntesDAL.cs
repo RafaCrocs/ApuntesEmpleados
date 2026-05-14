@@ -11,9 +11,9 @@ namespace ApuntesEmpleados.DAL.BD
     public class ApuntesDAL
     {
 
-        public List<VerApuntesRestaurante> Apuntes_ObtenerTodosRestaurante()
+        public List<VerApuntesHeladeria> Apuntes_ObtenerTodosHeladeria()
         {
-            List<VerApuntesRestaurante> apuntesRestaurante = new List<VerApuntesRestaurante>();
+            List<VerApuntesHeladeria> apuntesHeladeria = new List<VerApuntesHeladeria>();
             using (SqlConnection conn = new SqlConnection(Conexion.Cadena))
             {
                 using (SqlCommand cmd = new SqlCommand("sp_ObtenerApuntesPorOrigen", conn))
@@ -22,19 +22,19 @@ namespace ApuntesEmpleados.DAL.BD
                     try
                     {
                         conn.Open();
-                        cmd.Parameters.AddWithValue("@Origen", "Restaurante");
+                        cmd.Parameters.AddWithValue("@Origen", "Heladeria");
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                VerApuntesRestaurante apunte = new VerApuntesRestaurante
+                                VerApuntesHeladeria apunte = new VerApuntesHeladeria
                                 {
                                     IdEmpleado = Convert.ToInt32(reader["IdEmpleado"]),
                                     NombreCompleto = reader["NombreCompleto"].ToString(),
                                     Trabajo = reader["Trabajo"].ToString(),
                                     Monto = Convert.ToDecimal(reader["Monto"])
                                 };
-                                apuntesRestaurante.Add(apunte);
+                                apuntesHeladeria.Add(apunte);
                             }
                         }
                     }
@@ -44,7 +44,7 @@ namespace ApuntesEmpleados.DAL.BD
                     }
                 }
             }
-            return apuntesRestaurante;
+            return apuntesHeladeria;
         }
 
         public bool AgregarApunte(Apunte apunte, out string mensaje)
@@ -92,8 +92,8 @@ namespace ApuntesEmpleados.DAL.BD
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@IdApunte", idApunte);
-                    cmd.Parameters.AddWithValue("@Origen", "Restaurante");
-                    cmd.Parameters.AddWithValue("@SePagoEn", "Restaurante");
+                    cmd.Parameters.AddWithValue("@Origen", "Heladeria");
+                    cmd.Parameters.AddWithValue("@SePagoEn", "Heladeria");
 
                     cmd.Parameters.Add("@Mensaje", SqlDbType.VarChar, 200).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("@Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
@@ -121,7 +121,7 @@ namespace ApuntesEmpleados.DAL.BD
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@IdEmpleado", idEmpleado);
-                    cmd.Parameters.AddWithValue("@SePagoEn", "Restaurante");
+                    cmd.Parameters.AddWithValue("@SePagoEn", "Heladeria");
                     cmd.Parameters.Add("@Mensaje", SqlDbType.VarChar, 200).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("@Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
                     try

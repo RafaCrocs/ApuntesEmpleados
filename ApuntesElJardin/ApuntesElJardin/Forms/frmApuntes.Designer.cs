@@ -32,18 +32,18 @@
             txtNombre = new TextBox();
             lblBuscarNombre = new Label();
             gridApuntes = new DataGridView();
-            cmbTrabajo = new ComboBox();
-            label1 = new Label();
-            btnVerHistorial = new FontAwesome.Sharp.IconButton();
-            label2 = new Label();
-            label3 = new Label();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
             PagarTodo = new DataGridViewButtonColumn();
             Detalles = new DataGridViewButtonColumn();
             IdEmpleado = new DataGridViewTextBoxColumn();
             NombreCompleto = new DataGridViewTextBoxColumn();
             Trabajo = new DataGridViewTextBoxColumn();
             Monto = new DataGridViewTextBoxColumn();
+            cmbTrabajo = new ComboBox();
+            label1 = new Label();
+            btnVerHistorial = new FontAwesome.Sharp.IconButton();
+            label2 = new Label();
+            label3 = new Label();
+            iconButton1 = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)gridApuntes).BeginInit();
             SuspendLayout();
             // 
@@ -88,101 +88,6 @@
             gridApuntes.TabIndex = 5;
             gridApuntes.CellContentClick += gridApuntes_CellContentClick;
             gridApuntes.CellFormatting += gridApuntes_CellFormatting;
-            // 
-            // Trabajo
-            // 
-            Trabajo.DataPropertyName = "Trabajo";
-            Trabajo.HeaderText = "Trabajo";
-            Trabajo.MinimumWidth = 6;
-            Trabajo.Name = "Trabajo";
-            Trabajo.ReadOnly = true;
-            Trabajo.Visible = false;
-            Trabajo.Width = 125;
-            // 
-            // Monto
-            // 
-            Monto.DataPropertyName = "Monto";
-            Monto.HeaderText = "Monto";
-            Monto.MinimumWidth = 6;
-            Monto.Name = "Monto";
-            Monto.ReadOnly = true;
-            // 
-            // cmbTrabajo
-            // 
-            cmbTrabajo.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbTrabajo.Font = new Font("Segoe UI", 18F);
-            cmbTrabajo.FormattingEnabled = true;
-            cmbTrabajo.Location = new Point(363, 213);
-            cmbTrabajo.Name = "cmbTrabajo";
-            cmbTrabajo.Size = new Size(314, 40);
-            cmbTrabajo.TabIndex = 9;
-            cmbTrabajo.SelectedIndexChanged += cmbTrabajo_SelectedIndexChanged;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = SystemColors.ActiveCaption;
-            label1.Font = new Font("Segoe UI", 18F);
-            label1.Location = new Point(68, 216);
-            label1.Name = "label1";
-            label1.Size = new Size(289, 32);
-            label1.TabIndex = 8;
-            label1.Text = "Buscar por donde Trabaja:";
-            // 
-            // btnVerHistorial
-            // 
-            btnVerHistorial.BackColor = SystemColors.Control;
-            btnVerHistorial.Font = new Font("Segoe UI", 15F);
-            btnVerHistorial.IconChar = FontAwesome.Sharp.IconChar.ClockRotateLeft;
-            btnVerHistorial.IconColor = Color.Black;
-            btnVerHistorial.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnVerHistorial.IconSize = 30;
-            btnVerHistorial.ImageAlign = ContentAlignment.BottomLeft;
-            btnVerHistorial.Location = new Point(862, 216);
-            btnVerHistorial.Margin = new Padding(3, 2, 3, 2);
-            btnVerHistorial.Name = "btnVerHistorial";
-            btnVerHistorial.Size = new Size(152, 45);
-            btnVerHistorial.TabIndex = 17;
-            btnVerHistorial.Text = "Ver Historial";
-            btnVerHistorial.TextAlign = ContentAlignment.MiddleRight;
-            btnVerHistorial.UseVisualStyleBackColor = false;
-            btnVerHistorial.Click += btnVerHistorial_Click;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = SystemColors.ActiveCaption;
-            label2.Font = new Font("Segoe UI", 25F);
-            label2.Location = new Point(66, 61);
-            label2.Name = "label2";
-            label2.Size = new Size(317, 46);
-            label2.TabIndex = 18;
-            label2.Text = "Apuntes Pendientes";
-            // 
-            // label3
-            // 
-            label3.BackColor = SystemColors.ActiveCaption;
-            label3.Dock = DockStyle.Top;
-            label3.Location = new Point(0, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(1069, 355);
-            label3.TabIndex = 19;
-            // 
-            // iconButton1
-            // 
-            iconButton1.BackColor = Color.FromArgb(255, 192, 192);
-            iconButton1.Font = new Font("Segoe UI", 25F);
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.X;
-            iconButton1.IconColor = Color.Black;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.ImageAlign = ContentAlignment.BottomCenter;
-            iconButton1.Location = new Point(946, 45);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(68, 62);
-            iconButton1.TabIndex = 25;
-            iconButton1.TextAlign = ContentAlignment.TopCenter;
-            iconButton1.UseVisualStyleBackColor = false;
-            iconButton1.Click += iconButton1_Click;
             // 
             // PagarTodo
             // 
@@ -240,7 +145,85 @@
             Monto.Name = "Monto";
             Monto.ReadOnly = true;
             Monto.Width = 200;
-            //
+            // 
+            // cmbTrabajo
+            // 
+            cmbTrabajo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTrabajo.Font = new Font("Segoe UI", 18F);
+            cmbTrabajo.FormattingEnabled = true;
+            cmbTrabajo.Location = new Point(363, 213);
+            cmbTrabajo.Name = "cmbTrabajo";
+            cmbTrabajo.Size = new Size(314, 40);
+            cmbTrabajo.TabIndex = 9;
+            cmbTrabajo.SelectedIndexChanged += cmbTrabajo_SelectedIndexChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = SystemColors.ActiveCaption;
+            label1.Font = new Font("Segoe UI", 18F);
+            label1.Location = new Point(68, 216);
+            label1.Name = "label1";
+            label1.Size = new Size(289, 32);
+            label1.TabIndex = 8;
+            label1.Text = "Buscar por donde Trabaja:";
+            // 
+            // btnVerHistorial
+            // 
+            btnVerHistorial.BackColor = SystemColors.Control;
+            btnVerHistorial.Font = new Font("Segoe UI", 15F);
+            btnVerHistorial.IconChar = FontAwesome.Sharp.IconChar.ClockRotateLeft;
+            btnVerHistorial.IconColor = Color.Black;
+            btnVerHistorial.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnVerHistorial.IconSize = 30;
+            btnVerHistorial.ImageAlign = ContentAlignment.BottomLeft;
+            btnVerHistorial.Location = new Point(862, 216);
+            btnVerHistorial.Margin = new Padding(3, 2, 3, 2);
+            btnVerHistorial.Name = "btnVerHistorial";
+            btnVerHistorial.Size = new Size(152, 45);
+            btnVerHistorial.TabIndex = 17;
+            btnVerHistorial.Text = "Ver Historial";
+            btnVerHistorial.TextAlign = ContentAlignment.MiddleRight;
+            btnVerHistorial.UseVisualStyleBackColor = false;
+            btnVerHistorial.Click += btnVerHistorial_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = SystemColors.ActiveCaption;
+            label2.Font = new Font("Segoe UI", 25F);
+            label2.ForeColor = SystemColors.ControlText;
+            label2.Location = new Point(66, 61);
+            label2.Name = "label2";
+            label2.Size = new Size(317, 46);
+            label2.TabIndex = 18;
+            label2.Text = "Apuntes Pendientes";
+            // 
+            // label3
+            // 
+            label3.BackColor = SystemColors.ActiveCaption;
+            label3.Dock = DockStyle.Top;
+            label3.Location = new Point(0, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(1069, 355);
+            label3.TabIndex = 19;
+            // 
+            // iconButton1
+            // 
+            iconButton1.BackColor = Color.FromArgb(255, 192, 192);
+            iconButton1.Font = new Font("Segoe UI", 25F);
+            iconButton1.IconChar = FontAwesome.Sharp.IconChar.X;
+            iconButton1.IconColor = Color.Black;
+            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton1.ImageAlign = ContentAlignment.BottomCenter;
+            iconButton1.Location = new Point(946, 45);
+            iconButton1.Name = "iconButton1";
+            iconButton1.Size = new Size(68, 62);
+            iconButton1.TabIndex = 25;
+            iconButton1.TextAlign = ContentAlignment.TopCenter;
+            iconButton1.UseVisualStyleBackColor = false;
+            iconButton1.Click += iconButton1_Click;
+            // 
             // frmApuntes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);

@@ -10,9 +10,9 @@ namespace ApuntesEmpleados.DAL.BD
     public class DetallesDAL
     {
 
-        public List<DetallesRestaurante> ObtenerDetallesRestaurante(int IdEmpleado)
+        public List<DetallesHeladeria> ObtenerDetallesHeladeria(int IdEmpleado)
         {
-            List<DetallesRestaurante> detalles = new List<DetallesRestaurante>();
+            List<DetallesHeladeria> detalles = new List<DetallesHeladeria>();
             using (SqlConnection conn = new SqlConnection(Conexion.Cadena))
             {
                 conn.Open();
@@ -21,13 +21,13 @@ namespace ApuntesEmpleados.DAL.BD
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue("@IdEmpleado", IdEmpleado);
-                    cmd.Parameters.AddWithValue("@Origen", "Restaurante");
+                    cmd.Parameters.AddWithValue("@Origen", "Heladeria");
 
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
                         while (dr.Read())
                         {
-                            DetallesRestaurante detalle = new DetallesRestaurante()
+                            DetallesHeladeria detalle = new DetallesHeladeria()
                             {
                                 IdApunte = Convert.ToInt32(dr["IdApunte"]),
                                 NombreCompleto = dr["NombreCompleto"].ToString(),
@@ -58,8 +58,8 @@ namespace ApuntesEmpleados.DAL.BD
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@IdApunte", idApunte);
-                        cmd.Parameters.AddWithValue("@Origen", "Restaurante");
-                        cmd.Parameters.AddWithValue("@SePagoEn", "Restaurante");
+                        cmd.Parameters.AddWithValue("@Origen", "Heladeria");
+                        cmd.Parameters.AddWithValue("@SePagoEn", "Heladeria");
 
                         cmd.Parameters.Add("@Resultado", System.Data.SqlDbType.Bit).Direction = System.Data.ParameterDirection.Output;
                         cmd.Parameters.Add("Mensaje", System.Data.SqlDbType.VarChar, 200).Direction = System.Data.ParameterDirection.Output;

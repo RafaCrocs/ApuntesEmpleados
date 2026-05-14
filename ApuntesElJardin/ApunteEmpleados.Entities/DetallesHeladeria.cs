@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ApuntesEmpleados.Entities
 {
-    public class DetallesRestaurante
+    public class DetallesHeladeria
     {
         public int IdApunte { get; set; }
         public string NombreCompleto { get; set; }

@@ -200,9 +200,11 @@
             Controls.Add(lblMonto);
             Controls.Add(lblEmpleado);
             Controls.Add(txtNombre);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "AgregarApunteModal";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Apuntes Restaurante  v1.1.0";
+            Text = "Apuntes Heladeria  v1.1.0";
             ResumeLayout(false);
             PerformLayout();
         }

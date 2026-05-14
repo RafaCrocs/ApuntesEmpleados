@@ -11,9 +11,9 @@ namespace ApuntesEmpleados.BL
 
         private DetallesDAL detallesDAL = new DetallesDAL();
 
-        public List<DetallesRestaurante> ObtenerDetallesRestaurante(int IdEmpleado)
+        public List<DetallesHeladeria> ObtenerDetallesHeladeria(int IdEmpleado)
         {
-            return detallesDAL.ObtenerDetallesRestaurante(IdEmpleado);
+            return detallesDAL.ObtenerDetallesHeladeria(IdEmpleado);
         }
 
         public bool PagarApunte(int idApunte)

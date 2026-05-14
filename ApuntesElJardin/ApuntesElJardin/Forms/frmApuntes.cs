@@ -21,12 +21,12 @@ namespace ApuntesElJardin.Forms
         }
 
         private ApuntesBL apuntesBL = new ApuntesBL();
-        private List<VerApuntesRestaurante> apuntesRestaurante;
+        private List<VerApuntesHeladeria> apuntesHeladeria;
 
         public void CargarGrid()
         {
-            apuntesRestaurante = apuntesBL.ApuntesRestaurante();
-            gridApuntes.DataSource = apuntesRestaurante;
+            apuntesHeladeria = apuntesBL.ApuntesHeladeria();
+            gridApuntes.DataSource = apuntesHeladeria;
         }
 
         private void CargarCombos()
@@ -56,12 +56,12 @@ namespace ApuntesElJardin.Forms
         {
             if (txtNombre.Text.Length >= 3)
             {
-                var filtrados = apuntesRestaurante.FindAll(a => a.NombreCompleto.IndexOf(txtNombre.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                var filtrados = apuntesHeladeria.FindAll(a => a.NombreCompleto.IndexOf(txtNombre.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                 gridApuntes.DataSource = filtrados;
             }
             else
             {
-                gridApuntes.DataSource = apuntesRestaurante;
+                gridApuntes.DataSource = apuntesHeladeria;
             }
         }
 
@@ -79,7 +79,7 @@ namespace ApuntesElJardin.Forms
                         CargarGrid();
                         if(txtNombre.Text.Length >= 3)
                         {
-                            var filtrados = apuntesMiniMarket.FindAll(a => a.NombreCompleto.IndexOf(txtNombre.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                            var filtrados = apuntesHeladeria.FindAll(a => a.NombreCompleto.IndexOf(txtNombre.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                             gridApuntes.DataSource = filtrados;
                         }
                     }
@@ -104,12 +104,12 @@ namespace ApuntesElJardin.Forms
         {
             if (cmbTrabajo.Text == "")
             {
-                gridApuntes.DataSource = apuntesRestaurante;
+                gridApuntes.DataSource = apuntesHeladeria;
                 return;
             }
             else
             {
-                var empleadosFiltro = apuntesRestaurante.Where(x => x.Trabajo.ToLower().Contains(cmbTrabajo.Text.ToLower())).ToList();
+                var empleadosFiltro = apuntesHeladeria.Where(x => x.Trabajo.ToLower().Contains(cmbTrabajo.Text.ToLower())).ToList();
                 gridApuntes.DataSource = empleadosFiltro;
             }
         }

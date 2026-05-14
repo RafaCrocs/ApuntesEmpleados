@@ -12,9 +12,9 @@ namespace ApuntesEmpleados.BL
 
         private ApuntesDAL apuntesDAL = new ApuntesDAL();
 
-        public List<VerApuntesRestaurante> ApuntesRestaurante()
+        public List<VerApuntesHeladeria> ApuntesHeladeria()
         {
-            return apuntesDAL.Apuntes_ObtenerTodosRestaurante();
+            return apuntesDAL.Apuntes_ObtenerTodosHeladeria();
         }
 
         public bool AgregarApunte(Apunte apunte, out string mensaje)

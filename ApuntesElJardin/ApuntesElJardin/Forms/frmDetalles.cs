@@ -24,11 +24,11 @@ namespace ApuntesElJardin.Forms
         }
 
         private DetallesBL detallesBL = new DetallesBL();
-        private List<DetallesRestaurante> listaDetalles = new List<DetallesRestaurante>();
+        private List<DetallesHeladeria> listaDetalles = new List<DetallesHeladeria>();
 
         private void CargarGrid()
         {
-            listaDetalles = detallesBL.ObtenerDetallesRestaurante(idEmpleado);
+            listaDetalles = detallesBL.ObtenerDetallesHeladeria(idEmpleado);
             gridDetalles.DataSource = listaDetalles;
         }
         private void frmDetalles_Load(object sender, EventArgs e)
