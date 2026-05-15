@@ -104,12 +104,20 @@ namespace ApuntesElJardin.Forms
             this.Close();
         }
 
+
+        private AgregarEmpleadoModal agregarEmpleadoModal;
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            AgregarEmpleadoModal modal = new AgregarEmpleadoModal();
-            modal.ShowDialog();
-            CargarGrid();
-
+            if (agregarEmpleadoModal == null || agregarEmpleadoModal.IsDisposed)
+            {
+                agregarEmpleadoModal = new AgregarEmpleadoModal();
+                agregarEmpleadoModal.ShowDialog();
+                CargarGrid();
+            }
+            else
+            {
+                agregarEmpleadoModal.Focus();
+            }
         }
 
         private void iconButton1_Click(object sender, EventArgs e)

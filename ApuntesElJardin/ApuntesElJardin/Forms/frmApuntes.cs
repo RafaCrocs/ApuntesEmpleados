@@ -22,6 +22,7 @@ namespace ApuntesElJardin.Forms
 
         private ApuntesBL apuntesBL = new ApuntesBL();
         private List<VerApuntesMiniMarket> apuntesMiniMarket;
+        private frmHistorial _historial;
 
         public void CargarGrid()
         {
@@ -110,8 +111,15 @@ namespace ApuntesElJardin.Forms
 
         private void btnVerHistorial_Click(object sender, EventArgs e)
         {
-            frmHistorial historial = new frmHistorial();
-            historial.Show();
+            if (_historial == null || _historial.IsDisposed)
+            {
+                _historial = new frmHistorial();
+                _historial.Show();
+            }
+            else
+            {
+                _historial.Focus();
+            }
         }
 
         private void iconButton1_Click(object sender, EventArgs e)

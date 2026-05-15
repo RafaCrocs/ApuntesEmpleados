@@ -1,6 +1,7 @@
 ﻿using ApunteEmpleados.Entities;
 using ApuntesElJardin.Forms;
 using ApuntesEmpleados.BL;
+using ApuntesEmpleados.DAL.BD;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -128,10 +129,19 @@ namespace ApuntesElJardin.Modals
             }
         }
 
+        private frmApuntes frmApuntes;
+
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            frmApuntes frmApuntes = new frmApuntes();
-            frmApuntes.Show();
+            if (frmApuntes == null || frmApuntes.IsDisposed)
+            {
+                frmApuntes = new frmApuntes();
+                frmApuntes.Show();
+            }
+            else
+            {
+                frmApuntes.Focus();
+            }
         }
 
         private void txtMonto_TextChanged(object sender, EventArgs e)
