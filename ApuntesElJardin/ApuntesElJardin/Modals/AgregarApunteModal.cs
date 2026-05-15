@@ -142,13 +142,20 @@ namespace ApuntesElJardin.Modals
             }
         }
 
+        private frmApuntes frmApuntes;
         private void iconButton1_Click(object sender, EventArgs e)
         {
             try
             {
-
-                frmApuntes frmApuntes = new frmApuntes();
-                frmApuntes.Show();
+                if(frmApuntes == null || frmApuntes.IsDisposed)
+                {
+                    frmApuntes = new frmApuntes();
+                    frmApuntes.Show();
+                }
+                else
+                {
+                    frmApuntes.Focus();
+                }
             }
             catch
             {

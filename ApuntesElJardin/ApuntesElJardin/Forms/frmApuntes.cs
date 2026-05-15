@@ -22,6 +22,7 @@ namespace ApuntesElJardin.Forms
 
         private ApuntesBL apuntesBL = new ApuntesBL();
         private List<VerApuntesRestaurante> apuntesRestaurante;
+        private frmHistorial _historial;
 
         public void CargarGrid()
         {
@@ -54,7 +55,7 @@ namespace ApuntesElJardin.Forms
 
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
-            if (txtNombre.Text.Length >= 3)
+            if (txtNombre.Text.Length >= 2)
             {
                 var filtrados = apuntesRestaurante.FindAll(a => a.NombreCompleto.IndexOf(txtNombre.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                 gridApuntes.DataSource = filtrados;
@@ -109,17 +110,17 @@ namespace ApuntesElJardin.Forms
             }
         }
 
+
         private void btnVerHistorial_Click(object sender, EventArgs e)
         {
-            try
+            if (_historial == null || _historial.IsDisposed)
             {
-                frmHistorial historial = new frmHistorial();
-                historial.Show();
-
+                _historial = new frmHistorial();
+                _historial.Show();
             }
-            catch
+            else
             {
-                    MessageBox.Show("Error al abrir el historial");
+                _historial.Focus();
             }
         }
 

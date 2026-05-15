@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             gridDetalles = new DataGridView();
             Pagar = new DataGridViewButtonColumn();
             IdApunte = new DataGridViewTextBoxColumn();
@@ -41,6 +41,7 @@
             lblDetallesDe = new Label();
             lblNombre = new Label();
             iconButton1 = new FontAwesome.Sharp.IconButton();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)gridDetalles).BeginInit();
             SuspendLayout();
             // 
@@ -49,14 +50,14 @@
             gridDetalles.BackgroundColor = SystemColors.Control;
             gridDetalles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gridDetalles.Columns.AddRange(new DataGridViewColumn[] { Pagar, IdApunte, NombreCompleto, Trabajo, Origen, Detalle, Monto, Fecha });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 14F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            gridDetalles.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 14F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            gridDetalles.DefaultCellStyle = dataGridViewCellStyle1;
             gridDetalles.Location = new Point(22, 176);
             gridDetalles.Name = "gridDetalles";
             gridDetalles.ReadOnly = true;
@@ -140,6 +141,7 @@
             // lblDetallesDe
             // 
             lblDetallesDe.AutoSize = true;
+            lblDetallesDe.BackColor = SystemColors.ActiveCaption;
             lblDetallesDe.Font = new Font("Segoe UI", 20F);
             lblDetallesDe.Location = new Point(22, 78);
             lblDetallesDe.Name = "lblDetallesDe";
@@ -150,8 +152,9 @@
             // lblNombre
             // 
             lblNombre.AutoSize = true;
+            lblNombre.BackColor = SystemColors.ActiveCaption;
             lblNombre.Font = new Font("Segoe UI", 25F);
-            lblNombre.ForeColor = Color.FromArgb(128, 128, 255);
+            lblNombre.ForeColor = SystemColors.ActiveCaptionText;
             lblNombre.Location = new Point(199, 72);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(0, 46);
@@ -173,6 +176,15 @@
             iconButton1.UseVisualStyleBackColor = false;
             iconButton1.Click += iconButton1_Click;
             // 
+            // label3
+            // 
+            label3.BackColor = SystemColors.ActiveCaption;
+            label3.Dock = DockStyle.Top;
+            label3.Location = new Point(0, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(1006, 339);
+            label3.TabIndex = 27;
+            // 
             // frmDetalles
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -183,7 +195,11 @@
             Controls.Add(lblNombre);
             Controls.Add(lblDetallesDe);
             Controls.Add(gridDetalles);
+            Controls.Add(label3);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "frmDetalles";
+            ShowInTaskbar = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmDetalles";
             Load += frmDetalles_Load;
             ((System.ComponentModel.ISupportInitialize)gridDetalles).EndInit();
@@ -205,5 +221,6 @@
         private Label lblDetallesDe;
         private Label lblNombre;
         private FontAwesome.Sharp.IconButton iconButton1;
+        private Label label3;
     }
 }

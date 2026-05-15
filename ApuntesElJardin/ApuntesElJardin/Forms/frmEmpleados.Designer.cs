@@ -36,6 +36,7 @@
             cmbTrabajo = new ComboBox();
             btnNuevo = new FontAwesome.Sharp.IconButton();
             iconButton1 = new FontAwesome.Sharp.IconButton();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)gridEmpleados).BeginInit();
             SuspendLayout();
             // 
@@ -63,6 +64,7 @@
             // lblBuscarNombre
             // 
             lblBuscarNombre.AutoSize = true;
+            lblBuscarNombre.BackColor = SystemColors.ActiveCaption;
             lblBuscarNombre.Font = new Font("Segoe UI", 15F);
             lblBuscarNombre.Location = new Point(65, 90);
             lblBuscarNombre.Name = "lblBuscarNombre";
@@ -82,6 +84,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = SystemColors.ActiveCaption;
             label1.Font = new Font("Segoe UI", 15F);
             label1.Location = new Point(65, 136);
             label1.Name = "label1";
@@ -135,6 +138,15 @@
             iconButton1.UseVisualStyleBackColor = false;
             iconButton1.Click += iconButton1_Click;
             // 
+            // label3
+            // 
+            label3.BackColor = SystemColors.ActiveCaption;
+            label3.Dock = DockStyle.Top;
+            label3.Location = new Point(0, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(969, 355);
+            label3.TabIndex = 26;
+            // 
             // frmEmpleados
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -148,6 +160,7 @@
             Controls.Add(txtNombre);
             Controls.Add(lblBuscarNombre);
             Controls.Add(gridEmpleados);
+            Controls.Add(label3);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmEmpleados";
             StartPosition = FormStartPosition.CenterScreen;
@@ -167,5 +180,6 @@
         private ComboBox cmbTrabajo;
         private FontAwesome.Sharp.IconButton btnNuevo;
         private FontAwesome.Sharp.IconButton iconButton1;
+        private Label label3;
     }
 }
