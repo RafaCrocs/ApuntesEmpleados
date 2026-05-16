@@ -121,6 +121,7 @@ namespace ApuntesEmpleados.DAL.BD
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@IdEmpleado", idEmpleado);
+                    cmd.Parameters.AddWithValue("@Origen", "Heladeria");
                     cmd.Parameters.AddWithValue("@SePagoEn", "Heladeria");
                     cmd.Parameters.Add("@Mensaje", SqlDbType.VarChar, 200).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("@Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
